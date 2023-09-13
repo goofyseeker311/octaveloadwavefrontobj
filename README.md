@@ -3,4 +3,4 @@ load/parse wavefront obj 3d model files in gnu octave.
 
 objreader.m is the test script file.
 
-objects in the .obj files are assumed to have smoothing groups.
+any grouping information is ignored.
