@@ -14,7 +14,6 @@ function [k] = loadwavefrontobjfile(fname)
       k.objects{objectcount}.vertexlist = [];
       k.objects{objectcount}.facenormals = [];
       k.objects{objectcount}.texturecoords = [];
-      k.objects{objectcount}.smoothgroups = {};
     elseif (strncmp(lower(fline),"v ",2))
       farg = strtrim(substr(fline, 3));
       vline = str2num(farg);
