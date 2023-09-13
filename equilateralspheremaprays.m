@@ -6,5 +6,5 @@ function [k] = equilateralspheremaprays(hres,vres)
   for n = 1:hres
     rvectors(:,:,n) = axesrotation(0,0,hanglelist(n))*vvectors;
   endfor
-  k = rvectors;
+  rvectors = rvectors./sqrt(dot(rvectors,rvectors)); k = rvectors;
 endfunction
