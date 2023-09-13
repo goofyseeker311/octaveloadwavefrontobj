@@ -17,7 +17,7 @@ function [k] = loadwavefrontobjfile(fname)
       k.objects{objectcount}.object = farg;
       k.objects{objectcount}.vertexlist = [];
       k.objects{objectcount}.facenormals = [];
-      k.objects{objectcount}.vertextexcoords = [];
+      k.objects{objectcount}.texturecoords = [];
       k.objects{objectcount}.smoothgroups = {};
     elseif (strncmp(lower(fline),"v ",2))
       farg = strtrim(substr(fline, 3));
@@ -30,7 +30,7 @@ function [k] = loadwavefrontobjfile(fname)
     elseif (strncmp(lower(fline),"vt ",3))
       farg = strtrim(substr(fline, 4));
       vtline = str2num(farg);
-      k.objects{objectcount}.vertextexcoords(end+1,:) = vtline;
+      k.objects{objectcount}.texturecoords(end+1,:) = vtline;
     elseif (strncmp(lower(fline),"s ",2))
       farg = strtrim(substr(fline, 3));
       smgroupcount += 1; flinecount = 0;
