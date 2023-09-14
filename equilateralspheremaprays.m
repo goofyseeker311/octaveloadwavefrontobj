@@ -4,7 +4,7 @@ function [k] = equilateralspheremaprays(hres,vres)
   vvectors = [cosd(vanglelist);zeros(1,size(vanglelist,2));sind(vanglelist)];
   rvectors = zeros(3,vres,hres);
   for n = 1:hres
-    rvectors(:,:,n) = axesrotation(0,0,hanglelist(n))*vvectors;
+    rvectors(:,:,n) = rotationmatrix(0,0,hanglelist(n))*vvectors;
   endfor
   rvectors = rvectors./sqrt(dot(rvectors,rvectors)); k = rvectors;
 endfunction
