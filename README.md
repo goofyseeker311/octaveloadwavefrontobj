@@ -1,7 +1,4 @@
 # octave: load wavefront obj file
-load/parse wavefront obj 3d model files in gnu octave.
+load/parse wavefront obj 3d model files in gnu octave. any grouping information is ignored.
 
-objreader.m is the test script file.
-
-any grouping information is ignored.
-extra related 3d library algorithms.
+objreader.m is the test script file. includes extra related 3d library algorithms.
