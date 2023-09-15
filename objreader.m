@@ -4,3 +4,4 @@ rays = equilateralspheremaprays(hres,vres);
 triangle = [1 0 0;1 0 1;1 1 0]; point = [1 0 0];
 plane = planefrompoints(triangle);
 dist = pointplanedistance(point,plane);
+[anglelist,steplist] = cubemapangles(hres);
