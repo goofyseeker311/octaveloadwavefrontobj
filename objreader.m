@@ -7,3 +7,4 @@ ppdist = pointplanedistance(campos,trplane);
 [anglelist,steplist] = cubemapangles(hres);
 [cubemaprays,cmr] = unitxyzcubemaprays(vres);
 rpdist = rayplanedistance(campos,camdir,trplane);
+[intsect,inthit] = raytriangleintersection(campos,camdir,triangle);
