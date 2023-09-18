@@ -1,6 +1,6 @@
 clear; format long; output_precision(16);
 hres = 256; vres = 64; objfilename = "testcubemodel.obj";
-campos = [-10 0 0]; camdir = [0.9981 0 0.06105]; triangle = [1 0 0;1 0 1;1 1 0];
+campos = [-10 0 0]; camdir = [0.9981 0 0.06105]; triangle = [1 1 0;1 0 1;1 0 0];
 normdir = normalizevector(camdir);
 cubemodel = loadwavefrontobjfile(objfilename);
 [spheremaprays,smr] = equilateralspheremaprays(hres,vres);
