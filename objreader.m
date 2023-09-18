@@ -1,6 +1,6 @@
 clear; format long; output_precision(16);
-hres = 256; vres = 64; objfilename = "testcubemodel.obj";
-campos = [-10 0 0]; camdir = [0.9981 0 0.06105]; triangle = [1 1 0;1 0 1;1 0 0];
+hres = 256; vres = 64; objfilename = "testcubemodel2.obj";
+campos = [0 0 0]; camdir = [1 0 0]; triangle = [1 1 0;1 0 1;1 0 0];
 veclen = vectorlength(camdir);
 normdir = normalizevector(camdir);
 cubemodel = loadwavefrontobjfile(objfilename);
