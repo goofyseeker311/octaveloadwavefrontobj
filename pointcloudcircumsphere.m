@@ -1,4 +1,6 @@
-function [k,d] = pointcloudcircumsphere(vpointlist)
+function [k] = pointcloudcircumsphere(vpointlist)
   minlimits = min(vpointlist); maxlimits = max(vpointlist);
-  k = mean([minlimits;maxlimits]); d = max(vectorlength(k-vpointlist));
+  spherecenter = mean([minlimits;maxlimits]);
+  sphereradius = max(vectorlength(spherecenter-vpointlist));
+  k = [spherecenter sphereradius];
 endfunction

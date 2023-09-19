@@ -11,5 +11,5 @@ ppdist = pointplanedistance(campos,trplane);
 [cubemaprays,cmr] = unitxyzcubemaprays(vres);
 rpdist = rayplanedistance(campos,camdir,trplane);
 [intsect,inthit] = raytriangleintersection(campos,camdir,triangle);
-[trcsphere,sphererad] = trianglecircumsphere(triangle);
-[pccircum,pcrad] = pointcloudcircumsphere(cubemodel.vertexlist(1:8,:));
+[trsphere] = trianglecircumsphere(triangle);
+[pcsphere] = pointcloudcircumsphere(cubemodel.vertexlist(1:8,:));
