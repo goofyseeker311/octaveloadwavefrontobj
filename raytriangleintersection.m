@@ -1,9 +1,9 @@
 function [k,d] = raytriangleintersection(vpos,vdir,vtriangle)
-  k = []; d = [];
+  k = nan(1,3); d = false;
   tplane = planefrompoints(vtriangle);
   tpdist = rayplanedistance(vpos,vdir,tplane);
   if (!any(isnan(tpdist)))
-    tpoint = vpos + vdir.*tpdist; k = tpoint;
+    tpoint = vpos + vdir.*tpdist; k = tpoint; d = false;
     tsideplane1 = planefrompoints([vpos;vtriangle([2 1],:)]);
     tsideplane2 = planefrompoints([vpos;vtriangle([3 2],:)]);
     tsideplane3 = planefrompoints([vpos;vtriangle([1 3],:)]);
