@@ -7,11 +7,12 @@ function [k,d] = unitxyzcubemaprays(vres)
     sidefacerays(yind,:,:) = v';
     rsrays(:,end+1:end+vres) = v;
   endfor
-  rsraysz90 = rotationmatrix(0,0,90)*rsrays;
-  rsraysz180 = rotationmatrix(0,0,180)*rsrays;
-  rsraysz270 = rotationmatrix(0,0,270)*rsrays;
-  rsraysy90 = rotationmatrix(0,90,0)*rsrays;
-  rsraysy270 = rotationmatrix(0,270,0)*rsrays;
-  k = {rsrays rsraysz90 rsraysz180 rsraysz270 rsraysy90 rsraysy270};
-  d = [rsrays rsraysz90 rsraysz180 rsraysz270 rsraysy90 rsraysy270];
+  rsraysz0 = rsrays';
+  rsraysz90 = (rotationmatrix(0,0,90)*rsrays)';
+  rsraysz180 = (rotationmatrix(0,0,180)*rsrays)';
+  rsraysz270 = (rotationmatrix(0,0,270)*rsrays)';
+  rsraysy90 = (rotationmatrix(0,90,0)*rsrays)';
+  rsraysy270 = (rotationmatrix(0,270,0)*rsrays)';
+  k = {rsraysz0 rsraysz90 rsraysz180 rsraysz270 rsraysy90 rsraysy270};
+  d = [rsraysz0;rsraysz90;rsraysz180;rsraysz270;rsraysy90;rsraysy270];
 endfunction

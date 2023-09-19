@@ -4,8 +4,8 @@ function [k,d] = equilateralspheremaprays(hres,vres)
   vvectors = [cosd(vanglelist);zeros(1,size(vanglelist,2));sind(vanglelist)];
   rvectors = zeros(3,vres,hres);
   for n = 1:hres
-    svectors = rotationmatrix(0,0,hanglelist(n))*vvectors;
+    svectors = (rotationmatrix(0,0,hanglelist(n))*vvectors)';
     svectors = normalizevector(svectors);
-    k(:,:,n) = svectors; d(:,end+1:end+vres) = svectors;
+    k(:,:,n) = svectors; d(end+1:end+vres,:) = svectors;
   endfor
 endfunction
