@@ -1,3 +1,4 @@
 function [k,d] = pointcloudcircumsphere(vpointlist)
-  k = mean(vpointlist); d = max(vectorlength(k-vpointlist));
+  minlimits = min(vpointlist); maxlimits = max(vpointlist);
+  k = mean([minlimits;maxlimits]); d = max(vectorlength(k-vpointlist));
 endfunction
