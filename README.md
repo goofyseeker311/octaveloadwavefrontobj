@@ -10,3 +10,6 @@ in the form of [x1 y1 z1 (r1); x2 y2 z2 (r2); x3 y3 z3 (r3)]. multiple triangles
 
 equilrectangle spheremap 360 degree camera rendered unit cube (every coordinate is unit, side length 2) at 0,0,0 from -2,0.5,1.5 (from left top off-y-axis looking right). note: testing render only.
 ![spheremaprender6a](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/33155a5a-fa9f-45c3-8d2b-c8e47d9e6258)
+
+test render image in 360 degree image viewer (or in virtual reality goggles headset spheremap image viewer).
+![spheremaprender6b](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/1ed0e2a7-1de1-43a0-89dd-74f0af7dba91)
