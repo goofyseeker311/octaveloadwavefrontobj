@@ -2,7 +2,7 @@ function [k,d] = raytriangleintersection(vpos,vdir,vtriangle)
   k = nan(1,3); d = false;
   tplane = planefrompoints(vtriangle);
   tpdist = rayplanedistance(vpos,vdir,tplane);
-  if (!any(isnan(tpdist)))
+  if ((!any(isnan(tpdist)))&&(tpdist>=0))
     tpoint = vpos + vdir.*tpdist; k = tpoint;
     tsideplane1 = planefrompoints([vpos;vtriangle([2 1],:)]);
     tsideplane2 = planefrompoints([vpos;vtriangle([3 2],:)]);
