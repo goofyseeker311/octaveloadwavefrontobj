@@ -1,6 +1,6 @@
 clear all; format long; output_precision(16);
-hres = 256; vres = 64; objfilename = "testcubemodel2.obj";
-campos = [-10 -1 0.5]; camdir = [1 0 0]; triangle = [1 1 0;1 0 1;1 0 0];
+hres = 4096; vres = 1080; objfilename = "testcubemodel2.obj";
+campos = [-2 0.5 0.5]; camdir = [1 0 0]; triangle = [1 1 0;1 0 1;1 0 0];
 veclen = vectorlength(camdir);
 normdir = normalizevector(camdir);
 cubemodel = loadwavefrontobjfile(objfilename);
@@ -10,7 +10,7 @@ ppdist = pointplanedistance(campos,trplane);
 [anglelist,steplist] = cubemapangles(hres);
 [cubemaprays,cmr] = unitxyzcubemaprays(vres);
 rpdist = rayplanedistance(campos,camdir,trplane);
-[triangleint,trianglehit] = raytriangleintersection(campos,camdir,triangle);
+[trint,trhit] = raytriangleintersection(campos,camdir,triangle);
 [trsphere] = trianglecircumsphere(triangle);
 [pcsphere] = pointcloudcircumsphere(cubemodel.vertexlist(1:8,:));
 sgn = signnum([-1 0 1]);
