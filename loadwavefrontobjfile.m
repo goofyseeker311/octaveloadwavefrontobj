@@ -42,5 +42,5 @@ function [k] = loadwavefrontobjfile(fname)
       k.objects{objectcount}.faceindex(:,:,flinecount) = fclinemat;
     endif
   endwhile
-  fclose(fhandle); k = parsetrianglemesh(k);
+  fclose(fhandle); k = parsetrianglemesh(k); k = parsematerialindex(k);
 endfunction

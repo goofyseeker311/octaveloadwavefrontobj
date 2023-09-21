@@ -1,5 +1,5 @@
 function [k] = loadwavefrontmtlfile(fname)
-  k = []; k.materials = {}; fhandle = fopen(fname); ##read only default
+  k = []; k.materials = {}; fhandle = fopen(fname);
   fline = []; materialcount = 0;
   while((fline=fgets(fhandle))!=-1)
     fline = strtrim(fline);
