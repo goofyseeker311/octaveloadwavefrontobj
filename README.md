@@ -14,3 +14,9 @@ note: low resolution pixel-by-pixel testing render only.
 
 test render image in 360 degree image viewer (or in virtual reality goggles headset spheremap image viewer).
 ![spheremaprender6b](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/1ed0e2a7-1de1-43a0-89dd-74f0af7dba91)
+
+adding more cubes in the scene.
+![spheremaprender9e](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/4937afd4-1e35-4685-9eb5-72cfafa673f5)
+
+same image in 3d image viewer.
+![spheremaprender9f](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/1efdb76b-58fe-4ad6-98c7-625deb86592f)
