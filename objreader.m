@@ -1,8 +1,9 @@
 clear all; format long; output_precision(16);
-hres = 1024; vres = 256; objfilename = "testcubemodel3.obj";
-campos = [-2 0.5 1.5]; camdir = [1 0 -0.5]; triangle = [1 1 0;1 0 1;1 0 0];
+hres = 1024; vres = 256; objfilename = "testcubemodel2.obj";
+campos = [-2 0.5 1.5]; camdir = normalizevector([1 0 -0.5]);
+camrgt = [0 -1 0]; camup = normalizevector(cross(camrgt,camdir));
+triangle = [1 1 0;1 0 1;1 0 0];
 veclen = vectorlength(camdir);
-normdir = normalizevector(camdir);
 cubemodel = loadwavefrontobjfile(objfilename);
 [spheremaprays,smr] = equilateralspheremaprays(hres,vres);
 trplane = planefrompoints(triangle);
@@ -16,3 +17,4 @@ rpdist = rayplanedistance(campos,camdir,trplane);
 sgn = signnum([-1 0 1]);
 [cubeint,cubehit] = cubemapsphereintersection(campos,pcsphere,vres);
 vecang = vectorangle(camdir,campos);
+camplane = planefromnormalatpoint(campos,camup);
