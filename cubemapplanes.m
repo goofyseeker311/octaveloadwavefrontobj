@@ -7,12 +7,13 @@ function [k] = cubemapplanes(vpos,vres)
     cubemaprgt = (ones(vres,1)*[0 -1 0]);
     cubemapup = cross(cubemaprgt',fwdvectors')';
     cubemapup = cubemapup./sqrt(dot(cubemapup,cubemapup,2));
-    cmupx90 = (rotationmatrix(-90,0,0)*cubemapup')';
-    cmupz90a = (rotationmatrix(0,0,90)*cubemapup')';
+    cmupx = (rotationmatrix(0,0,180)*cubemapup')';
+    cmupx90 = (rotationmatrix(90,0,0)*cmupx')';
+    cmupz90a = (rotationmatrix(0,0,90)*cmupx')';
     cmupz90b = (rotationmatrix(0,0,90)*cmupx90')';
-    cmupy90a = (rotationmatrix(0,90,0)*cubemapup')';
+    cmupy90a = (rotationmatrix(0,90,0)*cmupx')';
     cmupy90b = (rotationmatrix(0,90,0)*cmupx90')';
-    cmpl = {cubemapup cmupx90; cmupz90a cmupz90b; cmupy90a cmupy90b};
+    cmpl = {cmupx cmupx90; cmupz90a cmupz90b; cmupy90a cmupy90b};
   endif
   rotx = [cmpl{1,1} -dot(ones(vres,1)*vpos,cmpl{1,1},2)];
   rotx90p = [cmpl{1,2} -dot(ones(vres,1)*vpos,cmpl{1,2},2)];
