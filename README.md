@@ -20,3 +20,9 @@ adding more cubes in the scene.
 
 same image in 3d image viewer.
 ![spheremaprender9f](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/1efdb76b-58fe-4ad6-98c7-625deb86592f)
+
+added color usage in a test image.
+![spheremaprender17](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/5591065b-772c-47dc-a33d-a96a00ffc662)
+
+same image in 3d image viewer.
+![spheremaprender17a](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/d655b185-d33a-4922-ac32-025dbd8ca73b)
