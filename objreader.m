@@ -1,5 +1,5 @@
 clear all; format long; output_precision(16);
-hres = 1024; vres = 256; objfilename = "testcubemodel2.obj";
+hres = 1024; vres = 256; objfilename = "testcubemodel4.obj";
 campos = [-2 0.5 1.5]; camdir = normalizevector([1 0 -0.4]);
 camrgt = [0 -1 0]; camup = normalizevector(cross(camrgt,camdir));
 camplane = planefromnormalatpoint(campos,camup);
@@ -22,3 +22,4 @@ sgn = signnum([-1 0 1]);
 [cubeint,cubehit] = cubemapsphereintersection(campos,pcsphere,vres);
 vecang = vectorangle(camdir,campos);
 [ptint,pthit] = planetriangleintersection(camplane,triangle);
+cmplanes = cubemapplanes(campos,vres);
