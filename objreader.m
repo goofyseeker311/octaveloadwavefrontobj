@@ -25,3 +25,4 @@ vecang = vectorangle(camdir,campos);
 cmplanes = cubemapplanes(campos,vres);
 smplanes = spheremapplanes(campos,hres);
 [smhanglelist,smvanglelist] = spheremapangles(hres,vres);
+[plint,plhit,pluv] = planelineintersection(camplane,triangle([1 2],:));
