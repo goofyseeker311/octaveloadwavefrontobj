@@ -23,3 +23,4 @@ sgn = signnum([-1 0 1]);
 vecang = vectorangle(camdir,campos);
 [ptint,pthit] = planetriangleintersection(camplane,triangle);
 cmplanes = cubemapplanes(campos,vres);
+smplanes = spheremapplanes(campos,hres);
