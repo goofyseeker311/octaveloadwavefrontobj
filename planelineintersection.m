@@ -12,7 +12,7 @@ function [k,d,u] = planelineintersection(vplane,vpos)
       pdistd = abs(pdist(1))./(abs(pdist(1))+abs(pdist(2)));
       pdistv = vpos(pdisti(2),:)-vpos(pdisti(1),:);
       ppos = vpos(pdisti(1),:)+pdistd.*pdistv;
-      pposuv = [0;1]; if (pdisti(1)==2) pposuv = fliplr(pposuv); endif
+      pposuv = pdistd; if (pdisti(1)==2) pposuv = 1-pdistd; endif
       k = ppos; d = 1; u = pposuv;
     endif
   endif
