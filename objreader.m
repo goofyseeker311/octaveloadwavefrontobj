@@ -1,5 +1,5 @@
 clear all; format long; output_precision(16);
-hres = 1024; vres = 1024; objfilename = "testcubemodel4.obj";
+hres = 32; vres = 32; objfilename = "testcubemodel4.obj";
 campos = [-2 0.5 1.5]; camdir = normalizevector([1 0 -0.4]);
 camrgt = [0 -1 0]; camup = normalizevector(cross(camrgt,camdir));
 camplane = planefromnormalatpoint(campos,camup);
@@ -13,7 +13,7 @@ cpdist1 = pointplanedistance(triangle(1,:),camplane);
 cpdist2 = pointplanedistance(triangle(2,:),camplane);
 cpdist3 = pointplanedistance(triangle(3,:),camplane);
 [cmanglelist,cmsteplist] = cubemapangles(hres);
-[cubemaprays,cmr] = unitxyzcubemaprays(vres);
+cubemaprays = unitxyzcubemaprays(vres);
 rpdist = rayplanedistance(campos,camdir,trplane);
 [trint,trhit,trdist,truvs,trhits]=raytriangleintersection(campos,camdir,triangle);
 [trsphere] = trianglecircumsphere(triangle);

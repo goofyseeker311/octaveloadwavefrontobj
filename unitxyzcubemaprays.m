@@ -1,18 +1,20 @@
-function [k,d] = unitxyzcubemaprays(vres)
+function [k] = unitxyzcubemaprays(vres)
   sidefacerays = []; [anglelist,steplist] = cubemapangles(vres);
-  x = ones(1,vres); onem = ones(1,vres); rsrays = [];
+  x = ones(1,vres); onem = ones(1,vres); rsrays = []; k = []; d = [];
+  rmatrixz90 = rotationmatrix(0,0,90);
+  rmatrixz180 = rotationmatrix(0,0,180);
+  rmatrixz270 = rotationmatrix(0,0,270);
+  rmatrixy90 = rotationmatrix(0,90,0);
+  rmatrixy270 = rotationmatrix(0,270,0);
   for yind = 1:vres
     y = steplist(yind).*onem; z = steplist;
     v = [x; y; z]; v = v./sqrt(dot(v,v));
     sidefacerays(yind,:,:) = v';
-    rsrays(:,end+1:end+vres) = v;
+    sidefaceraysz90(yind,:,:) = (rmatrixz90*v)';
+    sidefaceraysz180(yind,:,:) = (rmatrixz180*v)';
+    sidefaceraysz270(yind,:,:) = (rmatrixz270*v)';
+    sidefaceraysy90(yind,:,:) = (rmatrixy90*v)';
+    sidefaceraysy270(yind,:,:) = (rmatrixy270*v)';
   endfor
-  rsraysz0 = rsrays';
-  rsraysz90 = (rotationmatrix(0,0,90)*rsrays)';
-  rsraysz180 = (rotationmatrix(0,0,180)*rsrays)';
-  rsraysz270 = (rotationmatrix(0,0,270)*rsrays)';
-  rsraysy90 = (rotationmatrix(0,90,0)*rsrays)';
-  rsraysy270 = (rotationmatrix(0,270,0)*rsrays)';
-  k = {rsraysz0 rsraysz90 rsraysz180 rsraysz270 rsraysy90 rsraysy270};
-  d = [rsraysz0;rsraysz90;rsraysz180;rsraysz270;rsraysy90;rsraysy270];
+  k = {sidefacerays sidefaceraysz90 sidefaceraysz180 sidefaceraysz270 sidefaceraysy90 sidefaceraysy270};
 endfunction
