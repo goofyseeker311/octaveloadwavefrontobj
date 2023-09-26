@@ -7,7 +7,8 @@ function [k,d,u] = planelineintersection(vplane,vpos)
   [pdist,pdisti] = sort([pdist1 pdist2]);
   if ((pdist(1)<=0)&&(pdist(2)>=0))
     if ((pdist(1)==0)&&(pdist(2)==0))
-      k = vpos; d = 2; u = [0;1];
+      pposuv = [0;1]; if (pdisti(1)==2) pposuv = fliplr(pposuv); endif
+      k = vpos; d = 2; u = pposuv;
     else
       pdistd = abs(pdist(1))./(abs(pdist(1))+abs(pdist(2)));
       pdistv = vpos(pdisti(2),:)-vpos(pdisti(1),:);
