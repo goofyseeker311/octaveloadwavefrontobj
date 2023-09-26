@@ -8,7 +8,7 @@ function [k,d,u,f] = planetriangleintersection(vplane,vtriangle)
     if (ptlhit1) ptint = [ptint;ptlint1 ptluv1 ones(size(ptlint1,1),1)*[1,2]]; endif
     if (ptlhit2) ptint = [ptint;ptlint2 ptluv2 ones(size(ptlint2,1),1)*[1,3]]; endif
     if (ptlhit3) ptint = [ptint;ptlint3 ptluv3 ones(size(ptlint3,1),1)*[2,3]]; endif
-    ptint = unique(ptint,"rows");
-    k = ptint(:,1:3); d = true; u = ptint(:,4); f = ptint(:,5:6);
+    [ptuint,ptuind] = unique(ptint(:,1:4),"rows"); puintf = [ptint(ptuind,:)];
+    k = puintf(:,1:3); d = true; u = puintf(:,4); f = puintf(:,5:6);
   endif
 endfunction
