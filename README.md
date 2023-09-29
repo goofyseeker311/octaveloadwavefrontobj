@@ -9,23 +9,11 @@ any arrays of vectors, points, spheres and planes, and normal triangles are assu
 in the form of [x1 y1 z1 (r1); x2 y2 z2 (r2); x3 y3 z3 (r3)]. multiple triangles are stacked in the 3rd dimension, triangles(:,:,n).
 
 equirectangular spheremap 360 degree camera rendered unit cube (every coordinate is unit, side length 2) at 0,0,0 from -2,0.5,1.5 (from left top off-y-axis looking right).
-note: low resolution pixel-by-pixel testing render only.
-![spheremaprender6a](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/33155a5a-fa9f-45c3-8d2b-c8e47d9e6258)
-
-test render image in 360 degree image viewer (or in virtual reality goggles headset spheremap image viewer).
-![spheremaprender6b](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/1ed0e2a7-1de1-43a0-89dd-74f0af7dba91)
-
-adding more cubes in the scene.
-![spheremaprender9e](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/4937afd4-1e35-4685-9eb5-72cfafa673f5)
+note: high resolution plane-triangle intersection testing render only.
+![spheremaprender30A5](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/519329f9-07f8-4e6c-b2de-e2e0ca376692)
 
 same image in 3d image viewer.
-![spheremaprender9f](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/1efdb76b-58fe-4ad6-98c7-625deb86592f)
+![spheremaprender30A5a](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/af0c874b-441e-489d-b0fd-deaf85515da0)
 
-added color usage in a test image.
-![spheremaprender17](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/5591065b-772c-47dc-a33d-a96a00ffc662)
-
-same image in 3d image viewer.
-![spheremaprender17a](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/d655b185-d33a-4922-ac32-025dbd8ca73b)
-
-right view cubemap camera face render.
+cubemap camera right face view render.
 ![spheremaprender29A6](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/ceb9cf48-086b-451d-93e7-6553a150cc91)
