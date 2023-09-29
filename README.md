@@ -26,3 +26,6 @@ added color usage in a test image.
 
 same image in 3d image viewer.
 ![spheremaprender17a](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/d655b185-d33a-4922-ac32-025dbd8ca73b)
+
+right view cubemap camera face render.
+![spheremaprender29A5](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/fb04da33-7252-4273-b3cc-2ea72c480b3a)
