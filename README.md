@@ -9,10 +9,10 @@ any arrays of vectors, points, spheres and planes, and normal triangles are assu
 in the form of [x1 y1 z1 (r1); x2 y2 z2 (r2); x3 y3 z3 (r3)]. multiple triangles are stacked in the 3rd dimension, triangles(:,:,n).
 
 equirectangular spheremap 360 degree camera high resolution plane-triangle intersection testing render only.
-![spheremaprender30A5](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/519329f9-07f8-4e6c-b2de-e2e0ca376692)
+![spheremaprender30A9](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/39538d49-7a03-482e-85e9-39fc2ff6105c)
 
 same image in 3d image viewer.
-![spheremaprender30A5a](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/af0c874b-441e-489d-b0fd-deaf85515da0)
+![spheremaprender30A9a](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/37978ed2-4984-440c-8290-52208ea22a02)
 
 cubemap camera right face view render.
 ![spheremaprender29A6](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/ceb9cf48-086b-451d-93e7-6553a150cc91)
