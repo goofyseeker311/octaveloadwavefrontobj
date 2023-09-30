@@ -19,8 +19,11 @@ function [k,d] = renderobjectcameraplanes(vscene,vpos,vplanes,vvanglelist)
           dirvec = cross(upvector,renderplane(1:3));
           pint1=pint(1,:)-vpos; pint2=pint(2,:)-vpos;
           pint3=pint(2,:)-pint(1,:); pint3n=normalizevector(pint3);
-          vecang1 = signnum(pint1(3)).*vectorangle(pint1,dirvec);
-          vecang2 = signnum(pint2(3)).*vectorangle(pint2,dirvec);
+          upplane = planefromnormalatpoint(vpos,upvector);
+          upplaned1 = pointplanedistance(pint(1,:),upplane);
+          upplaned2 = pointplanedistance(pint(2,:),upplane);
+          vecang1 = signnum(upplaned1).*vectorangle(pint1,dirvec);
+          vecang2 = signnum(upplaned2).*vectorangle(pint2,dirvec);
           [svecang,svecangi] = sort([vecang1 vecang2]);
           stepyf = find((vvanglelist>=svecang(1))&(vvanglelist<=svecang(2)));
           if (!isempty(stepyf))
