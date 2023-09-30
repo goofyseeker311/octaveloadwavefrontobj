@@ -1,5 +1,5 @@
 clear all; format long; output_precision(16);
-hres = 1024; vres = 256; objfilename = "testcubemodel4.obj";
+hres = 8192; vres = 2160; objfilename = "testcubemodel4.obj";
 campos = [-2 0.5 1.5]; camdir = normalizevector([1 0 -0.4]);
 camrgt = [0 -1 0]; camup = normalizevector(cross(camrgt,camdir));
 camplane = planefromnormalatpoint(campos,camup);
@@ -26,7 +26,7 @@ smplanes = spheremapplanes(campos,hres);
 [plint,plhit,pluv] = planelineintersection(camplane,triangle([1 2],:));
 #spheremaprays = equilateralspheremaprays(hres,vres);
 #cubemaprays = unitxyzcubemaprays(vres);
-[outdrawbuffer,outzbuffer] = renderobjectcameraplanes(cubemodel,campos,smplanes,smvanglelist);
+[outdrawbuffer,outzbuffer] = renderobjectspherecamera(cubemodel,campos,hres,vres);
 
 outdrawbuffer = fliplr(outdrawbuffer); outdrawbuffer = flipud(outdrawbuffer);
 figure(2); clf; imagesc(outdrawbuffer); axis off; axis equal;
