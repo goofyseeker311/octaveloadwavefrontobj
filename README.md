@@ -14,5 +14,8 @@ equirectangular spheremap 360 degree camera high resolution plane-triangle inter
 same image in 3d image viewer.
 ![spheremaprender30A9a](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/37978ed2-4984-440c-8290-52208ea22a02)
 
-cubemap camera right face view render.
+cubemap camera right face view render using plane-triangle intersections.
 ![spheremaprender29A6](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/ceb9cf48-086b-451d-93e7-6553a150cc91)
+
+reference pixel-by-pixel ray cast render of cubemap right side view.
+![spheremaprender32A](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/b19c55de-86a7-4d1d-ac9c-26a9a61f0f06)
