@@ -1,5 +1,5 @@
 clear all; #format long; output_precision(16);
-hres = 1024; vres = 256; objfilename = "testcubemodel4.obj";
+hres = 7680; vres = 2160; objfilename = "testcubemodel4.obj";
 campos = [-2 0.5 1.5]; camdir = normalizevector([1 0 -0.4]);
 camrgt = [0 -1 0]; camup = normalizevector(cross(camrgt,camdir));
 camplane = planefromnormalatpoint(campos,camup);
