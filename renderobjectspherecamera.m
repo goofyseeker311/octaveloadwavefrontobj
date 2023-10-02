@@ -32,7 +32,7 @@ function [k,d] = renderobjectspherecamera(vscene,vpos,vhres,vvres)
             steplenlist = vecmult.*sind(stepanglist); steppointlist = pint(1,:)+steplenlist'.*pint3n;
             stepveclist = steppointlist-vpos; stepdistlist = vectorlength(stepveclist)';
             if (svecangi(1)==2) stepdistlist = fliplr(stepdistlist); endif
-            drawind = find((stepdistlist>0)&(stepdistlist<zbuffer(stepyf,L)'));
+            drawind = find(stepdistlist<zbuffer(stepyf,L)');
             if (!isempty(drawind))
               zbuffer(stepyf(drawind),L) = stepdistlist(drawind);
               drawbuffer(stepyf(drawind),L,1) = drawobjfacecolor(1)./(stepdistlist(drawind)./distlmod);
