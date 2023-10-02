@@ -19,3 +19,11 @@ cubemap camera right face view render using plane-triangle intersections.
 
 reference pixel-by-pixel ray cast render of cubemap right side view.
 ![spheremaprender32A](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/b19c55de-86a7-4d1d-ac9c-26a9a61f0f06)
+
+all cubemap side views rendered:
+![cubemaprender46A1](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/69070172-258e-4dc5-8003-100a11ce8c4d)
+![cubemaprender46A2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/15cf459f-f948-44b1-82c0-b1cde706c7b4)
+![cubemaprender46A3](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/2660e187-40e4-401f-b1c8-dc046b1a4ba3)
+![cubemaprender46A4](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/200e068e-fcf3-43e1-8e9e-b00aacdb6f1f)
+![cubemaprender46A5](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/9f050b03-92ba-49fb-b581-846a4200c86c)
+![cubemaprender46A6](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/40d2f362-501a-4fa3-86e0-98d652123727)
