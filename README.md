@@ -9,18 +9,9 @@ any arrays of vectors, points, spheres and planes, and normal triangles are assu
 in the form of [x1 y1 z1 (r1); x2 y2 z2 (r2); x3 y3 z3 (r3)]. multiple triangles are stacked in the 3rd dimension, triangles(:,:,n).
 
 equirectangular spheremap 360 degree camera high resolution plane-triangle intersection testing render only.
-![spheremaprender30A9](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/39538d49-7a03-482e-85e9-39fc2ff6105c)
+![spheremaprender46A](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/1e374fc3-d20e-475f-90ec-963f7bac4fb2)
 
-same image in 3d image viewer.
-![spheremaprender30A9a](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/37978ed2-4984-440c-8290-52208ea22a02)
-
-cubemap camera right face view render using plane-triangle intersections.
-![spheremaprender29A6](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/ceb9cf48-086b-451d-93e7-6553a150cc91)
-
-reference pixel-by-pixel ray cast render of cubemap right side view.
-![spheremaprender32A](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/b19c55de-86a7-4d1d-ac9c-26a9a61f0f06)
-
-all cubemap side views rendered:
+all cubemap side views rendered using plane-triangle intersections:
 ![cubemaprender46A1](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/69070172-258e-4dc5-8003-100a11ce8c4d)
 ![cubemaprender46A2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/15cf459f-f948-44b1-82c0-b1cde706c7b4)
 ![cubemaprender46A3](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/2660e187-40e4-401f-b1c8-dc046b1a4ba3)
