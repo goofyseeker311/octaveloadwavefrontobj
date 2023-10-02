@@ -29,13 +29,15 @@ function [k] = loadwavefrontobjfile(fname)
       k.objects{objectcount}.usemtl = farg;
     elseif (strncmp(lower(fline),"f ",2))
       farg = strtrim(substr(fline, 3));
-      fcline = strsplit(farg,{" "});
+      fcline = strsplit(farg,{" "},'collapsedelimiters',false);
       fclinemat = []; flinecount += 1;
       for n = 1:size(fcline,2)
-        fclinecol = strsplit(fcline{n},{"/"});
+        fclinecol = strsplit(fcline{n},{"/"},'collapsedelimiters',false);
         fclinecolmat = [];
         for m = 1:size(fclinecol,2)
-          fclinecolmat(1,m) = str2num(fclinecol{m});
+          fclinecolt = fclinecol{m};
+          if (isempty(fclinecol{m})) fclinecolt = '0'; endif
+          fclinecolmat(1,m) = str2num(fclinecolt);
         endfor
         fclinemat(n,:) = fclinecolmat;
       endfor
