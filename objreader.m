@@ -43,3 +43,9 @@ outdrawbuffer=fliplr(outdrawbuffer);outdrawbuffer=flipud(outdrawbuffer);#outdraw
 figure(7); clf; imagesc(outdrawbuffer); axis off; axis equal;
 xlim([1 hres]); ylim([1 vres]); daspect([1 1]);
 imwrite(outdrawbuffer,['spheremaprenderA.png']);
+
+[outdrawbuffer,outzbuffer] = renderobjectrayscamera(cubemodel,campos,projrays);
+outdrawbuffer=fliplr(outdrawbuffer);outdrawbuffer=flipud(outdrawbuffer);#outdrawbuffer=rot90(outdrawbuffer);
+figure(8); clf; imagesc(outdrawbuffer); axis off; axis equal;
+xlim([1 hres]); ylim([1 vres]); daspect([1 1]);
+imwrite(outdrawbuffer,['projectedraysrenderA.png']);
