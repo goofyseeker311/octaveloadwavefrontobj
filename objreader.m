@@ -26,6 +26,7 @@ smplanes = spheremapplanes(campos,hres);
 [plint,plhit,pluv] = planelineintersection(camplane,triangle([1 2],:));
 [hangles,hstep,vangles,vstep,dasp,aasp]=projectedangles(hres,vres,hfov,vfov);
 prplanes = projectedplanes(campos,hres,vres,hfov,vfov);
+projrays = projectedrays(hres,vres,hfov,vfov);
 #spheremaprays = equilateralspheremaprays(hres,vres);
 #cubemaprays = unitxyzcubemaprays(vres);
 
