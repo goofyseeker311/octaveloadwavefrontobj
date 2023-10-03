@@ -27,6 +27,7 @@ smplanes = spheremapplanes(campos,hres);
 [hangles,hstep,vangles,vstep,dasp,aasp]=projectedangles(hres,vres,hfov,vfov);
 prplanes = projectedplanes(campos,hres,vres,hfov,vfov);
 projrays = projectedrays(hres,vres,hfov,vfov);
+[dbout,zbout]=mergedrawbuffers(zeros(2,2,3),[1 1;2 2],ones(2,2,3),[0.5 1.5;2.5 1.5]);
 #spheremaprays = equilateralspheremaprays(hres,vres);
 #cubemaprays = unitxyzcubemaprays(vres);
 
