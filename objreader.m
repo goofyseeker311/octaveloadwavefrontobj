@@ -1,5 +1,5 @@
-clear all; #format long; output_precision(16);
-hres = 7680; vres = 2160; objfilename = "testcubemodel4.obj";
+clear all; objfilename="testcubemodel4.obj"; #format long;output_precision(16);
+hres = 1920; vres = 1080; hfov = 70; vfov = hfov./(hres./vres);
 campos = [-2 0.5 1.5]; camdir = normalizevector([1 0 -0.4]);
 camrgt = [0 -1 0]; camup = normalizevector(cross(camrgt,camdir));
 camplane = planefromnormalatpoint(campos,camup);
@@ -24,6 +24,7 @@ cmplanes = cubemapplanes(campos,vres);
 smplanes = spheremapplanes(campos,hres);
 [smhanglelist,smvanglelist] = spheremapangles(hres,vres);
 [plint,plhit,pluv] = planelineintersection(camplane,triangle([1 2],:));
+[hangles,hstep,vangles,vstep,dasp,aasp]=projectedangles(hres,vres,hfov,vfov);
 #spheremaprays = equilateralspheremaprays(hres,vres);
 #cubemaprays = unitxyzcubemaprays(vres);
 
