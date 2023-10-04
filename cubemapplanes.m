@@ -1,6 +1,6 @@
 function [k] = cubemapplanes(vpos,vres)
   global cmpl;
-  if (isempty(cmpl))
+  if (isempty(cmpl)||(size(cmpl{1,2},1)!=vres))
     [anglelist,steplist] = cubemapangles(vres);
     fwdvectors = [ones(vres,1) zeros(vres,1) steplist'];
     fwdvectors = fwdvectors./sqrt(dot(fwdvectors,fwdvectors,2));

@@ -1,6 +1,6 @@
 function [k] = projectedplanes(vpos,vhres,vvres,vhfov,vvfov)
   global prpl;
-  if (isempty(prpl))
+  if (isempty(prpl)||(size(prpl{1},1)!=vhres)||(size(prpl{2},1)!=vvres))
     [hangles,hstep,vangles,vstep,dasp,aasp]=projectedangles(vhres,vvres,vhfov,vvfov);
     hfwdvectors = [ones(vhres,1) hstep' zeros(vhres,1)];
     hfwdvectors = hfwdvectors./sqrt(dot(hfwdvectors,hfwdvectors,2));
