@@ -19,10 +19,10 @@ function [k,d,f,u,g] = raytriangleintersection(vpos,vdir,vtri)
         h31 = vectorangle(onem2.*v31,t3); h32 = vectorangle(onem2.*v32,t3);
         ci=find((h12<=a1)&(h13<=a1)&(h21<=a2)&(h23<=a2)&(h31<=a3)&(h32<=a3));
         if(!isempty(ci))
-          vci = vi(ci); onem3 = onem2(ci,1);
-          tv12 = dot(onem3.*v12n,t1,2); tv12q = tv12./v12L;
-          tv13 = dot(onem3.*v13n,t1,2); tv13q = tv13./v13L;
-          d(vci,n)=true; u(vci,:,n)=[tv12q tv13q]; g(vci,:,n)=onem3.*[1 2 1 3];
+          vci = vi(ci);
+          tv12 = dot(onem2.*v12n,t1,2); tv12q = tv12./v12L;
+          tv13 = dot(onem2.*v13n,t1,2); tv13q = tv13./v13L;
+          d(vci,n)=true; u(vci,:,n)=[tv12q(ci) tv13q(ci)]; g(vci,:,n)=onem(vci,1).*[1 2 1 3];
         endif
       endif
     endfor
