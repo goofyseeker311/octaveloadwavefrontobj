@@ -6,6 +6,6 @@ function [k] = equilateralspheremaprays(hres,vres)
   for n = 1:hres
     svectors = (rotationmatrix(0,0,hanglelist(n))*vvectors)';
     svectors = normalizevector(svectors);
-    k(:,:,n) = svectors;
+    k(:,n,:) = svectors;
   endfor
 endfunction
