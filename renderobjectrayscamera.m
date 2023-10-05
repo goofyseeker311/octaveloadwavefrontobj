@@ -11,20 +11,18 @@ function [k,d] = renderobjectrayscamera(vscene,vpos,vrays)
     endif
     ntriangles = size(drawobjtriangles,3);
     for n = 1:ntriangles
-      smtriangle = drawobjtriangles(:,1:3,n); yhits = zeros(1,ntriangles);
-      for Ly = 1:vvres
-        for Lx = 1:vhres
-          [trint,trhit,trdist,truvs,trhits]=raytriangleintersection(vpos,vrays(Ly,Lx,:)(:)',smtriangle);
-          if (trhit) yhits(n)+=1;
-            if ((trdist>0)&&(trdist<zbuffer(Ly,Lx)))
-              zbuffer(Ly,Lx) = trdist;
-              drawbuffer(Ly,Lx,:) = drawobjfacecolor./(trdist./distlmod);
-            endif
-          endif
-        endfor
-      endfor
-      yhitc = sum(yhits);
-      if (vverb) printf([' ' num2str(yhitc)]); endif
+      smtriangle = drawobjtriangles(:,1:3,n); yhits = 0;
+      linvrays = reshape(vrays,vhres*vvres,3);
+      [lintrint,lintrhit,lintrdist,lintruvs,lintrhits]=raytriangleintersection(vpos,linvrays,smtriangle);
+      yhits = sum(lintrhit); drawindex = find((lintrhit==true)&(lintrdist>=0));
+      drawzindex = find(lintrdist(drawindex)<zbuffer(drawindex)); drawzcombindex = drawindex(drawzindex);
+      zbuffer(drawzcombindex) = lintrdist(drawzcombindex);
+      drawbuffer1=drawbuffer(:,:,1);drawbuffer2=drawbuffer(:,:,2);drawbuffer3=drawbuffer(:,:,3);
+      drawbuffer1(drawzcombindex)=drawobjfacecolor(1)./(lintrdist(drawzcombindex)./distlmod);
+      drawbuffer2(drawzcombindex)=drawobjfacecolor(2)./(lintrdist(drawzcombindex)./distlmod);
+      drawbuffer3(drawzcombindex)=drawobjfacecolor(3)./(lintrdist(drawzcombindex)./distlmod);
+      drawbuffer(:,:,1)=drawbuffer1;drawbuffer(:,:,2)=drawbuffer2;drawbuffer(:,:,3)=drawbuffer3;
+      if (vverb) printf([' ' num2str(yhits)]); endif
     endfor
     if (vverb) printf(['\n']); endif
   endfor
