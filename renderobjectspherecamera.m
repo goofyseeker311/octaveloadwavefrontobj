@@ -35,9 +35,9 @@ function [k,d] = renderobjectspherecamera(vscene,vpos,vhres,vvres)
             drawind = find(stepdistlist<zbuffer(stepyf,L)');
             if (!isempty(drawind))
               zbuffer(stepyf(drawind),L) = stepdistlist(drawind);
-              drawbuffer(stepyf(drawind),L,1) = drawobjfacecolor(1); #./(stepdistlist(drawind)./distlmod);
-              drawbuffer(stepyf(drawind),L,2) = drawobjfacecolor(2); #./(stepdistlist(drawind)./distlmod);
-              drawbuffer(stepyf(drawind),L,3) = drawobjfacecolor(3); #./(stepdistlist(drawind)./distlmod);
+              drawbuffer(stepyf(drawind),L,1) = drawobjfacecolor(1);
+              drawbuffer(stepyf(drawind),L,2) = drawobjfacecolor(2);
+              drawbuffer(stepyf(drawind),L,3) = drawobjfacecolor(3);
             endif
           endif
         endif
