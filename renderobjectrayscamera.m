@@ -18,9 +18,9 @@ function [k,d] = renderobjectrayscamera(vscene,vpos,vrays)
       drawzindex = find(lintrdist(drawindex)<zbuffer(drawindex)); drawzcombindex = drawindex(drawzindex);
       zbuffer(drawzcombindex) = lintrdist(drawzcombindex);
       drawbuffer1=drawbuffer(:,:,1);drawbuffer2=drawbuffer(:,:,2);drawbuffer3=drawbuffer(:,:,3);
-      drawbuffer1(drawzcombindex)=drawobjfacecolor(1)./(lintrdist(drawzcombindex)./distlmod);
-      drawbuffer2(drawzcombindex)=drawobjfacecolor(2)./(lintrdist(drawzcombindex)./distlmod);
-      drawbuffer3(drawzcombindex)=drawobjfacecolor(3)./(lintrdist(drawzcombindex)./distlmod);
+      drawbuffer1(drawzcombindex)=drawobjfacecolor(1); #./(lintrdist(drawzcombindex)./distlmod);
+      drawbuffer2(drawzcombindex)=drawobjfacecolor(2); #./(lintrdist(drawzcombindex)./distlmod);
+      drawbuffer3(drawzcombindex)=drawobjfacecolor(3); #./(lintrdist(drawzcombindex)./distlmod);
       drawbuffer(:,:,1)=drawbuffer1;drawbuffer(:,:,2)=drawbuffer2;drawbuffer(:,:,3)=drawbuffer3;
       if (vverb) printf([' ' num2str(yhits)]); endif
     endfor

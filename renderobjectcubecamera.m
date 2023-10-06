@@ -59,9 +59,9 @@ function [k,d] = renderobjectcubecamera(vscene,vpos,vres)
                 drawind = find(stepdistlist<zbuffer(svecangf,L)');
                 if (!isempty(drawind))
                   zbuffer(svecangf(drawind),L) = stepdistlist(drawind);
-                  drawbuffer(svecangf(drawind),L,1) = drawobjfacecolor(1)./(stepdistlist(drawind)./distlmod);
-                  drawbuffer(svecangf(drawind),L,2) = drawobjfacecolor(2)./(stepdistlist(drawind)./distlmod);
-                  drawbuffer(svecangf(drawind),L,3) = drawobjfacecolor(3)./(stepdistlist(drawind)./distlmod);
+                  drawbuffer(svecangf(drawind),L,1) = drawobjfacecolor(1); #./(stepdistlist(drawind)./distlmod);
+                  drawbuffer(svecangf(drawind),L,2) = drawobjfacecolor(2); #./(stepdistlist(drawind)./distlmod);
+                  drawbuffer(svecangf(drawind),L,3) = drawobjfacecolor(3); #./(stepdistlist(drawind)./distlmod);
                 endif
               endif
             endif
