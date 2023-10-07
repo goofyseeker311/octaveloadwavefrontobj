@@ -1,5 +1,5 @@
 clear all; objfilename="testcubemodel4.obj"; #format long;output_precision(16);
-hres = 3840; vres = 2160; hfov = 90; vfov = 67.5; #pvrot = [0 0 0];
+hres = 1920; vres = 1080; hfov = 90; vfov = 67.5; #pvrot = [0 0 0];
 campos = [-2 0.5 1.5]; camdir = normalizevector([1 0 -0.4]);
 camrgt = [0 -1 0]; camup = normalizevector(cross(camrgt,camdir));
 camplane = planefromnormalatpoint(campos,camup);
@@ -27,23 +27,4 @@ prplanes = projectedplanes(campos,hres,vres,hfov,vfov);
 projrays = projectedrays(hres,vres,hfov,vfov);
 spheremaprays = equilateralspheremaprays(hres,vres);
 cubemaprays = unitxyzcubemaprays(vres);
-
-for n=1:6
-  [outdrawbuffer,outzbuffer] = renderobjectrayscamera(cubemodel,campos,cubemaprays{n});
-  outdrawbuffer=fliplr(outdrawbuffer);outdrawbuffer=flipud(outdrawbuffer);#outdrawbuffer=rot90(outdrawbuffer);
-  figure(n); clf; imagesc(outdrawbuffer); axis off; axis equal;
-  xlim([1 vres]); ylim([1 vres]); daspect([1 1]);
-  imwrite(outdrawbuffer,['cubemapraysrenderA' num2str(n) '.png']);
-endfor
-
-[outdrawbuffer,outzbuffer] = renderobjectrayscamera(cubemodel,campos,spheremaprays);
-outdrawbuffer=fliplr(outdrawbuffer);outdrawbuffer=flipud(outdrawbuffer);#outdrawbuffer=rot90(outdrawbuffer);
-figure(7); clf; imagesc(outdrawbuffer); axis off; axis equal;
-xlim([1 hres]); ylim([1 vres]); daspect([1 1]);
-imwrite(outdrawbuffer,['spheremapraysrenderA.png']);
-
-[outdrawbuffer,outzbuffer] = renderobjectrayscamera(cubemodel,campos,projrays);
-outdrawbuffer=fliplr(outdrawbuffer);outdrawbuffer=flipud(outdrawbuffer);#outdrawbuffer=rot90(outdrawbuffer);
-figure(8); clf; imagesc(outdrawbuffer); axis off; axis equal;
-xlim([1 hres]); ylim([1 vres]); daspect([1 1]);
-imwrite(outdrawbuffer,['projectedraysrenderA.png']);
+figure(11);clf;view(3);axis equal;plotobjectsphere(cubemodel,campos);
