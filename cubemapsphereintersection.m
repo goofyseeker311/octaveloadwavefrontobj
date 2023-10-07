@@ -7,8 +7,7 @@ function [k,d] = cubemapsphereintersection(vpos,vsphere,vres)
   lvecli=find(lvecl);lveclin=find(!lvecl);lveclic=size(lvecli,1);lveclinc=size(lveclin,1);
   cmanglesa = ones(lveclic,1).*cmangles;
   for n = 1:6
-    k{n,1} = nan(vspherec,2); k{n,1}(lveclin,:) = ones(lveclinc,1).*cmangles([1 end]);
-    k{n,2} = nan(vspherec,2); k{n,2}(lveclin,:) = ones(lveclinc,1).*cmangles([1 end]);
+    k{n,1} = nan(vspherec,4); k{n,1}(lveclin,:) = ones(lveclinc,1).*cmangles([1 end 1 end]);
   endfor
   d(lveclin,1) = true(lveclinc,1);
   if (!isempty(lvecli))
@@ -33,7 +32,7 @@ function [k,d] = cubemapsphereintersection(vpos,vsphere,vres)
       lvecx2Ia=cmanglesa; lvecx2Ia(lvecx2Ifn)=nan;
       lvecx1Iaminmax = [min(lvecx1Ia,[],2) max(lvecx1Ia,[],2)];
       lvecx2Iaminmax = [min(lvecx2Ia,[],2) max(lvecx2Ia,[],2)];
-      k{n,1}(lvecli,:) = lvecx1Iaminmax; k{n,2}(lvecli,:) = lvecx2Iaminmax;
+      k{n,1}(lvecli,:) = [lvecx1Iaminmax lvecx2Iaminmax];
       lvecx1Ah = sum(lvecx1I,2); lvecx2Ah = sum(lvecx2I,2);
       lvechiti = find((lvecx1Ah>0)|(lvecx2Ah>0));
       if (!isempty(lvechiti)) d(lvecli(lvechiti),1) = true; endif
