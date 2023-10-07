@@ -12,7 +12,7 @@ function [k,d] = cubemapsphereintersection(vpos,vsphere,vres)
   endfor
   d(lveclin,1) = true(lveclinc,1);
   if (!isempty(lvecli))
-    cmradang = asind(vsphere(lvecli,4)./lvecl(lvecli,1));
+    cmradang = real(asind(vsphere(lvecli,4)./lvecl(lvecli,1)));
     cubedir = [ [ 1 0 0] [3 2]; [0  1  0] [3 1];
                 [-1 0 0] [3 2]; [0 -1  0] [3 1];
                 [ 0 0 1] [2 1]; [0  0 -1] [2 1]; ];
