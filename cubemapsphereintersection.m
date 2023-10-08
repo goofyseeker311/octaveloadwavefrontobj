@@ -30,8 +30,12 @@ function [k,d,f] = cubemapsphereintersection(vpos,vsphere,vres)
       lvecx2If = find(lvecx2I); lvecx2Ifn = find(!lvecx2I);
       lvecx1Ia=cmanglesa; lvecx1Ia(lvecx1Ifn)=nan;
       lvecx2Ia=cmanglesa; lvecx2Ia(lvecx2Ifn)=nan;
-      lvecx1Iaminmax = [min(lvecx1Ia,[],2) max(lvecx1Ia,[],2)];
-      lvecx2Iaminmax = [min(lvecx2Ia,[],2) max(lvecx2Ia,[],2)];
+      [lvecx1Iamin,lvecx1Iamini] = min(lvecx1Ia,[],2);
+      [lvecx1Iamax,lvecx1Iamaxi] = max(lvecx1Ia,[],2);
+      [lvecx2Iamin,lvecx2Iamini] = min(lvecx2Ia,[],2);
+      [lvecx2Iamax,lvecx2Iamaxi] = max(lvecx2Ia,[],2);
+      lvecx1Iaminmax = [lvecx1Iamini lvecx1Iamaxi];
+      lvecx2Iaminmax = [lvecx2Iamini lvecx2Iamaxi];
       k{n,1}(lvecli,:) = [lvecx1Iaminmax lvecx2Iaminmax];
       lvecx1Ah = sum(lvecx1I,2); lvecx2Ah = sum(lvecx2I,2);
       lvechiti = find((lvecx1Ah>0)|(lvecx2Ah>0));
