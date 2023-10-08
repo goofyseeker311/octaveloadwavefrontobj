@@ -1,5 +1,5 @@
 function [k,d,f,g,p] = renderobjectrayscamera(vscene,vpos,vrays)
-  vhres = size(vrays,2); vvres = size(vrays,1); distlmod=10;vverb=false;
+  vhres = size(vrays,2); vvres = size(vrays,1); distlmod=10;vverb=true;
   linvrays = reshape(vrays,vhres*vvres,3);
   drawbuffer=zeros(vvres,vhres,3);zbuffer=inf(vvres,vhres);
   obuffer=nan(vvres,vhres);tbuffer=nan(vvres,vhres);nbuffer=nan(vvres,vhres,4);
