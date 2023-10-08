@@ -29,7 +29,7 @@ cubemaprays = unitxyzcubemaprays(vres);
 subsrays = subsurfacerays(spheremaprays,trplane);
 
 [scdbuffer,sczbuffer] = renderobjectspherecamera(cubemodel,campos,hres,vres);
-figure(1);clf;imagesc(scdbuffer);whitebg([0.8 0.8 0.8]);xlim([1 vres]);ylim([1 vres]);axis off;daspect([1 1]);
+figure(1);clf;imagesc(scdbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
 imwrite(scdbuffer,['spheremapplanerenderA.png']);
 [cmdbuffers,cmzbuffers] = renderobjectcubecamera(cubemodel,campos,vres);
 for n = 1:6
