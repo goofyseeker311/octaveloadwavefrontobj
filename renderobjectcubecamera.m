@@ -17,9 +17,9 @@ function [k,d] = renderobjectcubecamera(vscene,vpos,vres)
       endif
       for n = 1:size(drawobjtriangles,3)
         smtriangle = drawobjtriangles(:,1:3,n); yhits = zeros(1,vres);
+        [pints,phits] = planetriangleintersection(renderplanes,smtriangle);
         for L = 1:vres
-          renderplane = renderplanes(L,:);
-          [pint,phit] = planetriangleintersection(renderplane,smtriangle);
+          pint = pints(L,:); phit = phits(L); renderplane = renderplanes(L,:);
           if (phit) yhits(L)+=1;
             dirvec = dirvecs(vd,:); pint1=pint(1,1:3); pint2=pint(1,4:6);
             vposplane = planefromnormalatpoint(vpos,dirvec);
