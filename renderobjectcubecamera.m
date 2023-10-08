@@ -21,7 +21,7 @@ function [k,d] = renderobjectcubecamera(vscene,vpos,vres)
           renderplane = renderplanes(L,:);
           [pint,phit] = planetriangleintersection(renderplane,smtriangle);
           if (phit) yhits(L)+=1;
-            dirvec = dirvecs(vd,:); pint1=pint(1,:); pint2=pint(2,:);
+            dirvec = dirvecs(vd,:); pint1=pint(1,1:3); pint2=pint(1,4:6);
             vposplane = planefromnormalatpoint(vpos,dirvec);
             vposppdist1 = pointplanedistance(pint1,vposplane);
             vposppdist2 = pointplanedistance(pint2,vposplane);
@@ -53,7 +53,7 @@ function [k,d] = renderobjectcubecamera(vscene,vpos,vres)
               if (!isempty(svecangf))
                 alphaang = vectorangle(-pint1,pint3); alphalen = vectorlength(pint2);
                 vecmult = alphalen./sind(alphaang); stepanglist = cmanglelist(svecangf)-svecang(1);
-                steplenlist = vecmult.*sind(stepanglist); steppointlist = pint(1,:)+steplenlist'.*pint3n;
+                steplenlist = vecmult.*sind(stepanglist); steppointlist = pint1+steplenlist'.*pint3n;
                 stepveclist = steppointlist-vpos; stepdistlist = vectorlength(stepveclist)';
                 if (svecangi(1)==2) stepdistlist = fliplr(stepdistlist); endif
                 drawind = find(stepdistlist<zbuffer(svecangf,L)');
