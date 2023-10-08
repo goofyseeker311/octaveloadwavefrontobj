@@ -1,6 +1,6 @@
-function [k,d] = cubemapsphereintersection(vpos,vsphere,vres)
+function [k,d,f] = cubemapsphereintersection(vpos,vsphere,vres)
   global cmangles cmres; vspherec=size(vsphere,1); k={}; d=false(vspherec,1);
-  lvec = vsphere(:,1:3)-vpos; lvecl = vectorlength(lvec);
+  lvec = vsphere(:,1:3)-vpos; lvecl = vectorlength(lvec); f = lvecl;
   if (isempty(cmres)||isempty(cmangles)||(vres!=cmres))
     cmres = vres; cmangles = cubemapangles(vres);
   endif
