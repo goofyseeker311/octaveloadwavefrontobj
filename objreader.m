@@ -15,7 +15,6 @@ sgn = signnum([-1 0 1]);
 vecang = vectorangle(camdir,campos);
 [trint,trhit,trdist,truvs,trhits]=raytriangleintersection(campos,camdir,triangle);
 [cubeint,cubehit,cubedist] = cubemapsphereintersection(campos,pcsphere,vres);
-[plint,plhit,pluv] = planelineintersection(camplane,triangle([1 2],:));
 [ptint,pthit,ptuvs,pthits] = planetriangleintersection(camplane,triangle);
 [cmanglelist,cmsteplist] = cubemapangles(vres);
 [smhanglelist,smvanglelist] = spheremapangles(hres,vres);
