@@ -18,8 +18,7 @@ function [k,d] = renderobjectcubesketch(vscene,vpos,vres)
       for n = 1:6
         cxylines = cint{n};
         if (all(isfinite(cxylines)))
-          hcmlines = find((cmang>=cxylines(1))&(cmang<=cxylines(2)));
-          vcmlines = find((cmang>=cxylines(3))&(cmang<=cxylines(4)));
+          hcmlines = cxylines(1):cxylines(2); vcmlines = cxylines(3):cxylines(4);
           zbuffer = d{n}(vcmlines,hcmlines); drawindex = find(cdist<zbuffer);
           zbuffer(drawindex) = cdist; d{n}(vcmlines,hcmlines) = zbuffer;
           drawbuffer1=k{n}(vcmlines,hcmlines,1);drawbuffer1(drawindex)=drawobjfacecolor(1);k{n}(vcmlines,hcmlines,1)=drawbuffer1;
