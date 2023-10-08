@@ -12,9 +12,9 @@ function [k,d] = renderobjectspherecamera(vscene,vpos,vhres,vvres)
     endif
     for n = 1:size(drawobjtriangles,3)
       smtriangle = drawobjtriangles(:,1:3,n); yhits = zeros(1,vhres);
+      [pints,phits] = planetriangleintersection(vplanes,smtriangle);
       for L = 1:vhres
-        renderplane = vplanes(L,:);
-        [pint,phit] = planetriangleintersection(renderplane,smtriangle);
+        pint = pints(L,:); phit = phits(L); renderplane = vplanes(L,:);
         if (phit) yhits(L)+=1;
           dirvec = cross(upvector,renderplane(1:3));
           pintv1 = pint(1,1:3); pintv2 = pint(1,4:6);
