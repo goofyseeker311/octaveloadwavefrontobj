@@ -1,11 +1,6 @@
-function [k,d,f,g,l] = renderobjectrayscamera(vscene,vpos,vrays,vnormal)
+function [k,d,f,g] = renderobjectrayscamera(vscene,vpos,vrays)
   vhres = size(vrays,2); vvres = size(vrays,1); distlmod=10;vverb=false;
-  linvrays = reshape(vrays,vhres*vvres,3); linvraysc = size(linvrays,1);
-  subsufracerays = zeros(vhres,vvres);
-  if ((!isempty(vnormal))&&(!isnan(vnormal)))
-    linvraysang = vectorangle(linvrays,ones(linvraysc,1).*vnormal(1:3));
-    subsufracerays = reshape(linvraysang>=90,vvres,vhres);
-  endif
+  linvrays = reshape(vrays,vhres*vvres,3);
   drawbuffer=zeros(vvres,vhres,3);zbuffer=inf(vvres,vhres);
   obuffer=nan(vvres,vhres);tbuffer=nan(vvres,vhres);nbuffer=nan(vvres,vhres,3);
   for m = 1:size(vscene.objects,2)
@@ -32,5 +27,5 @@ function [k,d,f,g,l] = renderobjectrayscamera(vscene,vpos,vrays,vnormal)
     endfor
     if (vverb) printf(['\n']); endif
   endfor
-  k = drawbuffer; d = zbuffer; f = obuffer; f(:,:,2) = tbuffer; g = nbuffer; l = subsufracerays;
+  k = drawbuffer; d = zbuffer; f = obuffer; f(:,:,2) = tbuffer; g = nbuffer;
 endfunction
