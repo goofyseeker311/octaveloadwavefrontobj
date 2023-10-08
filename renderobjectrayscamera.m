@@ -1,4 +1,4 @@
-function [k,d,f,g] = renderobjectrayscamera(vscene,vpos,vrays)
+function [k,d,f,g,p] = renderobjectrayscamera(vscene,vpos,vrays)
   vhres = size(vrays,2); vvres = size(vrays,1); distlmod=10;vverb=false;
   linvrays = reshape(vrays,vhres*vvres,3);
   drawbuffer=zeros(vvres,vhres,3);zbuffer=inf(vvres,vhres);
@@ -28,4 +28,5 @@ function [k,d,f,g] = renderobjectrayscamera(vscene,vpos,vrays)
     if (vverb) printf(['\n']); endif
   endfor
   k = drawbuffer; d = zbuffer; f = obuffer; f(:,:,2) = tbuffer; g = nbuffer;
+  p=ones(vvres,vhres).*vpos(1);p(:,:,2)=vpos(2);p(:,:,3)=vpos(3);p+=zbuffer.*vrays;
 endfunction
