@@ -1,5 +1,5 @@
 clear all; objfilename="testcubemodel4.obj"; #format long;output_precision(16); #testcubemodel4
-hres = 192; vres = 108; hfov = 90; vfov = 67.5; #pvrot = [0 0 0];
+hres = 3840; vres = 1080; hfov = 90; vfov = 67.5; #pvrot = [0 0 0];
 campos = [-2 0.5 1.5]; camdir = normalizevector([1 0 -0.4]);
 camrgt = [0 -1 0]; camup = normalizevector(cross(camrgt,camdir));
 camplane = planefromnormalatpoint(campos,camup);
@@ -28,8 +28,11 @@ spheremaprays = equilateralspheremaprays(hres,vres);
 cubemaprays = unitxyzcubemaprays(vres);
 subsrays = subsurfacerays(spheremaprays,trplane);
 
-[csdbuffers,cszbuffers] = renderobjectcubesketch(cubemodel,campos,vres);
+[scdbuffer,sczbuffer] = renderobjectspherecamera(cubemodel,campos,hres,vres);
+figure(1);clf;imagesc(scdbuffer);whitebg([0.8 0.8 0.8]);xlim([1 vres]);ylim([1 vres]);axis off;daspect([1 1]);
+imwrite(scdbuffer,['spheremapplanerenderA.png']);
+[cmdbuffers,cmzbuffers] = renderobjectcubecamera(cubemodel,campos,vres);
 for n = 1:6
-  figure(n);clf;imagesc(csdbuffers{n});whitebg([0.8 0.8 0.8]);xlim([1 vres]);ylim([1 vres]);axis off;daspect([1 1]);
-  imwrite(csdbuffers{n},['cubemapsketchrenderA' num2str(n) '.png']);
+  figure(n);clf;imagesc(cmdbuffers{n});whitebg([0.8 0.8 0.8]);xlim([1 vres]);ylim([1 vres]);axis off;daspect([1 1]);
+  imwrite(cmdbuffers{n},['cubemapplanerenderA' num2str(n) '.png']);
 endfor
