@@ -1,5 +1,5 @@
 clear all; objfilename="testcubemodel4.obj"; #format long;output_precision(16); #testcubemodel4
-hres = 1920; vres = 1080; hfov = 90; vfov = 67.5; #pvrot = [0 0 0];
+hres = 192; vres = 108; hfov = 90; vfov = 67.5; #pvrot = [0 0 0];
 campos = [-2 0.5 1.5]; camdir = normalizevector([1 0 -0.4]);
 camrgt = [0 -1 0]; camup = normalizevector(cross(camrgt,camdir));
 camplane = planefromnormalatpoint(campos,camup);
@@ -15,8 +15,8 @@ sgn = signnum([-1 0 1]);
 vecang = vectorangle(camdir,campos);
 [trint,trhit,trdist,truvs,trhits]=raytriangleintersection(campos,camdir,triangle);
 [cubeint,cubehit,cubedist] = cubemapsphereintersection(campos,pcsphere,vres);
-[ptint,pthit,ptuvs,pthits] = planetriangleintersection(camplane,triangle);
 [plint,plhit,pluv] = planelineintersection(camplane,triangle([1 2],:));
+[ptint,pthit,ptuvs,pthits] = planetriangleintersection(camplane,triangle);
 [cmanglelist,cmsteplist] = cubemapangles(vres);
 [smhanglelist,smvanglelist] = spheremapangles(hres,vres);
 [hangles,hstep,vangles,vstep,dasp,aasp]=projectedangles(hres,vres,hfov,vfov);
@@ -29,3 +29,11 @@ spheremaprays = equilateralspheremaprays(hres,vres);
 cubemaprays = unitxyzcubemaprays(vres);
 subsrays = subsurfacerays(spheremaprays,trplane);
 figure(11);clf;view(3);axis equal;whitebg([0.8 0.8 0.8]);plotobjectsphere(cubemodel,campos);
+
+[outdrawbuffer,outzbuffer,outobjbuffer,outnormbuffer,outpointbuffer] = renderobjectrayscamera(cubemodel,campos,projrays);
+imwrite(outdrawbuffer,['projectedraysrenderA.png']);
+zbuffercolors = renderobjectraysbouncecamera(cubemodel,outpointbuffer,spheremaprays,outobjbuffer,outnormbuffer);
+outdrawbuffer3 = 10.*zbuffercolors + outdrawbuffer;
+figure(2); clf; imagesc(outdrawbuffer3); axis off; axis equal;
+xlim([1 hres]); ylim([1 vres]); daspect([1 1]);
+imwrite(outdrawbuffer3,['projectedraysrenderB.png']); save renderdata.dat;
