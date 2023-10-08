@@ -6,7 +6,7 @@ function [k,d] = renderobjectspherecamera(vscene,vpos,vhres,vvres)
     if (vverb) printf(['m[' num2str(m) ']: ']); endif
     drawobjtriangles = vscene.objects{m}.triangles;
     drawobjmaterial = vscene.materials{vscene.objects{m}.materialindex};
-    drawobjfacecolor = [1 0.5 0.5];
+    drawobjfacecolor = [1 1 1];
     if (isfield(drawobjmaterial,"facecolor"))
       drawobjfacecolor = drawobjmaterial.facecolor;
     endif
@@ -17,11 +17,12 @@ function [k,d] = renderobjectspherecamera(vscene,vpos,vhres,vvres)
         [pint,phit] = planetriangleintersection(renderplane,smtriangle);
         if (phit) yhits(L)+=1;
           dirvec = cross(upvector,renderplane(1:3));
-          pint1=pint(1,:)-vpos; pint2=pint(2,:)-vpos;
-          pint3=pint(2,:)-pint(1,:); pint3n=normalizevector(pint3);
+          pintv1 = pint(1,1:3); pintv2 = pint(1,4:6);
+          pint1=pintv1-vpos; pint2=pintv2-vpos;
+          pint3=pintv2-pintv1; pint3n=normalizevector(pint3);
           upplane = planefromnormalatpoint(vpos,upvector);
-          upplaned1 = pointplanedistance(pint(1,:),upplane);
-          upplaned2 = pointplanedistance(pint(2,:),upplane);
+          upplaned1 = pointplanedistance(pintv1,upplane);
+          upplaned2 = pointplanedistance(pintv2,upplane);
           vecang1 = signnum(upplaned1).*vectorangle(pint1,dirvec);
           vecang2 = signnum(upplaned2).*vectorangle(pint2,dirvec);
           [svecang,svecangi] = sort([vecang1 vecang2]);
@@ -29,7 +30,7 @@ function [k,d] = renderobjectspherecamera(vscene,vpos,vhres,vvres)
           if (!isempty(stepyf))
             alphaang = vectorangle(-pint1,pint3); alphalen = vectorlength(pint2);
             vecmult = alphalen./sind(alphaang); stepanglist = vvanglelist(stepyf)-svecang(1);
-            steplenlist = vecmult.*sind(stepanglist); steppointlist = pint(1,:)+steplenlist'.*pint3n;
+            steplenlist = vecmult.*sind(stepanglist); steppointlist = pintv1+steplenlist'.*pint3n;
             stepveclist = steppointlist-vpos; stepdistlist = vectorlength(stepveclist)';
             if (svecangi(1)==2) stepdistlist = fliplr(stepdistlist); endif
             drawind = find(stepdistlist<zbuffer(stepyf,L)');
