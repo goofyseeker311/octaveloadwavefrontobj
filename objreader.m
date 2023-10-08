@@ -28,12 +28,9 @@ projrays = projectedrays(hres,vres,hfov,vfov);
 spheremaprays = equilateralspheremaprays(hres,vres);
 cubemaprays = unitxyzcubemaprays(vres);
 subsrays = subsurfacerays(spheremaprays,trplane);
-figure(11);clf;view(3);axis equal;whitebg([0.8 0.8 0.8]);plotobjectsphere(cubemodel,campos);
 
-[outdrawbuffer,outzbuffer,outobjbuffer,outnormbuffer,outpointbuffer] = renderobjectrayscamera(cubemodel,campos,projrays);
-imwrite(outdrawbuffer,['projectedraysrenderA.png']);
-zbuffercolors = renderobjectraysbouncecamera(cubemodel,outpointbuffer,spheremaprays,outobjbuffer,outnormbuffer);
-outdrawbuffer3 = 10.*zbuffercolors + outdrawbuffer;
-figure(2); clf; imagesc(outdrawbuffer3); axis off; axis equal;
-xlim([1 hres]); ylim([1 vres]); daspect([1 1]);
-imwrite(outdrawbuffer3,['projectedraysrenderB.png']); save renderdata.dat;
+[csdbuffers,cszbuffers] = renderobjectcubesketch(cubemodel,campos,vres);
+for n = 1:6
+  figure(n);clf;imagesc(csdbuffers{n});whitebg([0.8 0.8 0.8]);xlim([1 vres]);ylim([1 vres]);axis off;daspect([1 1]);
+  imwrite(csdbuffers{n},['cubemapsketchrenderA' num2str(n) '.png']);
+endfor
