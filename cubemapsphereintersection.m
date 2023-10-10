@@ -7,7 +7,7 @@ function [k,d,f] = cubemapsphereintersection(vpos,vsphere,vres)
   lvecli=find(lvecl);lveclin=find(!lvecl);lveclic=size(lvecli,1);lveclinc=size(lveclin,1);
   cmanglesa = ones(lveclic,1).*cmangles;
   for n = 1:6
-    k{n,1} = nan(vspherec,4); k{n,1}(lveclin,:) = ones(lveclinc,1).*cmangles([1 end 1 end]);
+    k{n,1} = nan(vspherec,4); k{n,1}(lveclin,:) = ones(lveclinc,1).*[1 vres 1 vres];
   endfor
   d(lveclin,1) = true(lveclinc,1);
   if (!isempty(lvecli))
