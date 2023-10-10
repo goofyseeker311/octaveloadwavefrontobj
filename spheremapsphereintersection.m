@@ -6,7 +6,7 @@ function [k,d,f] = spheremapsphereintersection(vpos,vsphere,hres,vres)
   endif
   lvecli=find(lvecl);lveclin=find(!lvecl);lveclic=size(lvecli,1);lveclinc=size(lveclin,1);
   smhanglesa = ones(lveclic,1).*smhangles; smvanglesa = ones(lveclic,1).*smvangles;
-  k = nan(vspherec,4); k(lveclin,:) = ones(lveclinc,1).*[1 vres 1 vres];
+  k = nan(vspherec,4); k(lveclin,:) = ones(lveclinc,1).*[1 hres 1 vres];
   d(lveclin,1) = true(lveclinc,1);
   if (!isempty(lvecli))
     smradang = real(asind(vsphere(lvecli,4)./lvecl(lvecli,1)));
