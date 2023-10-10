@@ -1,5 +1,5 @@
 function [k,d,f] = spheremapsphereintersection(vpos,vsphere,hres,vres)
-  global smhangles smvangles smvres smhres; vspherec=size(vsphere,1); k={}; d=false(vspherec,1);
+  global smhangles smvangles smvres smhres; vspherec=size(vsphere,1); k=[]; d=false(vspherec,1);
   lvec = vsphere(:,1:3)-vpos; lvecl = vectorlength(lvec); f = lvecl;
   if (isempty(smhres)||(hres!=smhres)|isempty(smvres)||(vres!=smvres)||isempty(smhangles)||isempty(smvangles))
     smhres=hres; smvres=vres; [smhangles,smvangles] = spheremapangles(hres,vres);
