@@ -15,6 +15,7 @@ sgn = signnum([-1 0 1]);
 vecang = vectorangle(camdir,campos);
 [trint,trhit,trdist,truvs,trhits]=raytriangleintersection(campos,camdir,triangle);
 [cubeint,cubehit,cubedist] = cubemapsphereintersection(campos,pcsphere,vres);
+[sphereint,spherehit,spheredist] = spheremapsphereintersection(campos,pcsphere,hres,vres);
 [ptint,pthit,ptuvs,pthits] = planetriangleintersection(camplane,triangle);
 [cmanglelist,cmsteplist] = cubemapangles(vres);
 [smhanglelist,smvanglelist] = spheremapangles(hres,vres);
@@ -57,6 +58,6 @@ endfor
 [prrdbuffer,prrzbuffer,objbuffer,normbuffer,pointbuffer] = renderobjectrayscamera(cubemodel,campos,projrays);
 figure(22);clf;imagesc(prrdbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
 imwrite(prrdbuffer,['projectedraysrenderA.png']);
-[bordbuffer] = renderobjectraysbouncecamera(cubemodel,pointbuffer,spheremaprays,objbuffer,normbuffer);
+bordbuffer = renderobjectraysbouncecamera(cubemodel,pointbuffer,spheremaprays,objbuffer,normbuffer);
 figure(23);clf;imagesc(bordbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
 imwrite(bordbuffer,['projectedbounceraysrenderA.png']);
