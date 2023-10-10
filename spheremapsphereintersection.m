@@ -10,8 +10,8 @@ function [k,d,f] = spheremapsphereintersection(vpos,vsphere,hres,vres)
   d(lveclin,1) = true(lveclinc,1);
   if (!isempty(lvecli))
     smradang = real(asind(vsphere(lvecli,4)./lvecl(lvecli,1)));
-    cubedir = [0 1 0 3]; lvech = lvec; lvech(:,cubedir(4))=0;
-    hvecang = signnum(lvech(lvecli,1)).*vectorangle(lvech(lvecli,:),ones(lveclic,1).*cubedir(1:3));
+    lookatdir = [0 1 0]; lvech = lvec; lvech(:,3)=0;
+    hvecang = signnum(lvech(lvecli,1)).*vectorangle(lvech(lvecli,:),ones(lveclic,1).*lookatdir(1:3));
     vvecang = signnum(lvec(lvecli,3)).*vectorangle(lvech(lvecli,:),lvec);
     hvecangmin = hvecang-smradang;hvecangmax = hvecang+smradang;
     vvecangmin = vvecang-smradang;vvecangmax = vvecang+smradang;
