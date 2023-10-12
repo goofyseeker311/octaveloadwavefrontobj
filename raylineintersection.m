@@ -14,7 +14,7 @@ function [k,d,f] = raylineintersection(vpos,vdir,vline)
       if (!isempty(darraynansfc))
         f(darraynansfc,n)=darraynums(darraynansfc);
         k(darraynansfc,:,n)=vpos+vdir(n,:).*f(darraynansfc,n);
-        darraynansdif = (k(darraynansfc,:,n)-p1)./v1;
+        darraynansdif = (k(darraynansfc,:,n)-p1(darraynansfc,:))./v1(darraynansfc,:);
         darraynansdiff = ones(size(darraynansdif,1),1);
         darraynansdifc1 = find(!isnan(darraynansdif(:,1)));
         darraynansdifc2 = find(!isnan(darraynansdif(:,2)));
