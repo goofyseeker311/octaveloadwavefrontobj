@@ -3,8 +3,7 @@ function [k,d,f] = raylineintersection(vpos,vdir,vline)
   if ((vdirc>0)&&(vlinec>0))
     k=nan(vlinec,3,vdirc);d=false(vlinec,vdirc);f=nan(vlinec,vdirc);
     p1=vline(:,1:3);p2=vline(:,4:6);v1=p2-p1;
-    v2=v1(:,[2 3 1]);s1 = planefromnormalatpoint(p1,v2);
-    v3=v1(:,[3 1 2]);s2 = planefromnormalatpoint(p1,v3);
+    vvecs = planetangentvectors(p1,v1);s1=vvecs(:,:,1);s2=vvecs(:,:,2);
     for n = 1:vdirc
       d1=rayplanedistance(vpos,vdir(n,:),s1)';d2=rayplanedistance(vpos,vdir(n,:),s2)';
       darray=[d1 d2];darraynums=min(darray,[],2);
