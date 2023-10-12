@@ -12,7 +12,8 @@ function [k,d] = renderobjectspherecamera(vscene,vpos,vhres,vvres)
     endif
     for n = 1:size(drawobjtriangles,3)
       smtriangle = drawobjtriangles(:,1:3,n); yhits = zeros(1,vhres);
-      [pints,phits] = planetriangleintersection(vplanes,smtriangle);
+      [pints,phits,ptuvs,ptinds] = planetriangleintersection(vplanes,smtriangle);
+      [plints,plhits,pldist] = raylineintersection(vpos,upvector,pints);
       for L = 1:vhres
         pint = pints(L,:); phit = phits(L); renderplane = vplanes(L,:);
         if (phit) yhits(L)+=1;
@@ -20,13 +21,15 @@ function [k,d] = renderobjectspherecamera(vscene,vpos,vhres,vvres)
           pintv1 = pint(1,1:3); pintv2 = pint(1,4:6);
           pint1=pintv1-vpos; pint2=pintv2-vpos;
           pint3=pintv2-pintv1; pint3n=normalizevector(pint3);
-          upplane = planefromnormalatpoint(vpos,upvector);
-          upplaned1 = pointplanedistance(pintv1,upplane);
-          upplaned2 = pointplanedistance(pintv2,upplane);
-          vecang1 = signnum(upplaned1).*vectorangle(pint1,dirvec);
-          vecang2 = signnum(upplaned2).*vectorangle(pint2,dirvec);
+          vecang1 = signnum(pint1(3)).*vectorangle(pint1,dirvec);
+          vecang2 = signnum(pint2(3)).*vectorangle(pint2,dirvec);
           [svecang,svecangi] = sort([vecang1 vecang2]);
-          stepyf = find((vvanglelist>=svecang(1))&(vvanglelist<=svecang(2)));
+          stepyi = (vvanglelist>=svecang(1))&(vvanglelist<=svecang(2)); stepyfn = find(!stepyi);
+          vvanglelista = vvanglelist; vvanglelista(stepyfn) = nan;
+          [stepyimin,stepyimini] = min(vvanglelista,[],2);
+          [stepyimax,stepyimaxi] = max(vvanglelista,[],2);
+          stepyf = stepyimini:stepyimaxi; vecang12d = svecang(2)-svecang(1);
+          if (vecang12d>180) stepyf = [1:(stepyimini-1) (stepyimaxi+1):vvres]; endif
           if (!isempty(stepyf))
             alphaang = vectorangle(-pint1,pint3); alphalen = vectorlength(pint2);
             vecmult = alphalen./sind(alphaang); stepanglist = vvanglelist(stepyf)-svecang(1);
