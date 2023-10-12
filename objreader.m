@@ -18,6 +18,7 @@ vecang = vectorangle(camdir,campos);
 [sphereint,spherehit,spheredist] = spheremapsphereintersection(campos,pcsphere,hres,vres);
 [ptint,pthit,ptuvs,pthits] = planetriangleintersection(camplane,triangle);
 [rlint,rlhit,rldist] = raylineintersection([0 0 -0.1],[1 0 0],[triangle(2,1:3) triangle(3,1:3)]);
+[psint,pshit,psdist,psrad] = planesphereintersection(camplane,pcsphere+[0 0 2 0]);
 [cmanglelist,cmsteplist] = cubemapangles(vres);
 [smhanglelist,smvanglelist] = spheremapangles(hres,vres);
 [hangles,hstep,vangles,vstep,dasp,aasp]=projectedangles(hres,vres,hfov,vfov);
