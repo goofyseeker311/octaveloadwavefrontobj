@@ -25,6 +25,7 @@ vecang = vectorangle(camdir,campos);
 [cmplanes,cmpd,cmpu,cmpr] = cubemapplanes(campos,vres);
 [smplanes,smpd,smpu] = spheremapplanes(campos,hres);
 prplanes = projectedplanes(campos,hres,vres,hfov,vfov);
+[camptvecs] = planetangentvectors(campos,camplane);
 [dbout,zbout]=mergedrawbuffers(zeros(2,2,3),[1 1;2 2],ones(2,2,3),[0.5 1.5;2.5 1.5]);
 projrays = projectedrays(hres,vres,hfov,vfov);
 spheremaprays = equilateralspheremaprays(hres,vres);

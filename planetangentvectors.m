@@ -1,5 +1,6 @@
 function [k] = planetangentvectors(vpos,vplane)
-  v1=vplane(:,[2 3 1]);s1 = planefromnormalatpoint(vpos,v1);
-  v2=vplane(:,[3 1 2]);s2 = planefromnormalatpoint(vpos,v2);
-  k = s1; k(:,:,2) = s2;
+  v1=vplane(:,[2 3 1]);
+  s1=planefromnormalatpoint(vpos,normalizevector(cross(v1,vplane(:,1:3))));
+  s2=planefromnormalatpoint(vpos,normalizevector(cross(s1(1:3),vplane(:,1:3))));
+  k=s1; k(:,:,2)=s2;
 endfunction
