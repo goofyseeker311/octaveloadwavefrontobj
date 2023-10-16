@@ -16,6 +16,7 @@ function [k,d] = renderobjectcubecamera(vscene,vpos,vres)
       for n = 1:size(drawobjtriangles,3)
         smtriangle = drawobjtriangles(:,1:3,n); yhits = zeros(1,vres);
         [pints,phits] = planetriangleintersection(renderplanes,smtriangle);
+        [plints,plhits,pldist] = raylineintersection(vpos,upvector,pints);
         for L = 1:vres
           pint = pints(L,:); phit = phits(L); renderplane = renderplanes(L,:);
           if (phit) yhits(L)+=1;
