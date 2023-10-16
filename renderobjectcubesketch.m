@@ -1,10 +1,11 @@
 function [k,d] = renderobjectcubesketch(vscene,vpos,vres)
-  distlmod=10;vverb=false;k={};d={}; [cmang,cmstep] = cubemapangles(vres);
+  distlmod=10;vverb=true;k={};d={}; [cmang,cmstep] = cubemapangles(vres);
   for n = 1:6
     k{n} = 0.5.*ones(vres,vres,3); d{n} = inf(vres,vres);
   endfor
+  if (vverb) printf(['m:']); endif
   for m = 1:size(vscene.objects,2)
-    if (vverb) printf(['m[' num2str(m) ']: ']); endif
+    if (vverb) printf([' ' num2str(m)]); endif
     drawobjtriangles = vscene.objects{m}.triangles;
     drawobjmaterial = vscene.materials{vscene.objects{m}.materialindex};
     drawobjfacecolor = [1 1 1];
@@ -27,6 +28,6 @@ function [k,d] = renderobjectcubesketch(vscene,vpos,vres)
         endif
       endfor
     endif
-    if (vverb) printf(['\n']); endif
   endfor
+  if (vverb) printf(['\n']); endif
 endfunction

@@ -1,8 +1,9 @@
 function [k,d] = renderobjectspheresketch(vscene,vpos,hres,vres)
-  distlmod=10;vverb=false;k=[];d=[]; [smhanglelist,smvanglelist] = spheremapangles(hres,vres);
+  distlmod=10;vverb=true;k=[];d=[]; [smhanglelist,smvanglelist] = spheremapangles(hres,vres);
   k = 0.5.*ones(vres,hres,3); d = inf(vres,hres);
+  if (vverb) printf(['m:']); endif
   for m = 1:size(vscene.objects,2)
-    if (vverb) printf(['m[' num2str(m) ']: ']); endif
+    if (vverb) printf([' ' num2str(m)]); endif
     drawobjtriangles = vscene.objects{m}.triangles;
     drawobjmaterial = vscene.materials{vscene.objects{m}.materialindex};
     drawobjfacecolor = [1 1 1];
@@ -24,6 +25,6 @@ function [k,d] = renderobjectspheresketch(vscene,vpos,hres,vres)
           drawbuffer3=k(vcmlines,hcmlines,3);drawbuffer3(drawindex)=drawobjfacecolor(3);k(vcmlines,hcmlines,3)=drawbuffer3;
         endif
     endif
-    if (vverb) printf(['\n']); endif
   endfor
+  if (vverb) printf(['\n']); endif
 endfunction
