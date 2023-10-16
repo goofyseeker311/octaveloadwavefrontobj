@@ -28,14 +28,14 @@ function [k,d] = renderobjectspherelinesketch(vscene,vpos,hres,vres)
       stepyi2 = find(isfinite(stepyimini)&isfinite(stepyimaxi));
       stepyi2c = size(stepyi2,1);
       for n = 1:stepyi2c
-        L = stepyi2(n); Lh = cpshitf(L);
+        Lv = stepyi2(n); L = cpshitf(Lv);
         if (cpsintdirf(n))
-          drawind = stepyimini(L):stepyimaxi(L);
-          drawindex = find(cpsintdist(L)<d(drawind,Lh));
-          d(drawind(drawindex),Lh) = cpsintdist(L);
-          k(drawind(drawindex),Lh,1) = drawobjfacecolor(1);
-          k(drawind(drawindex),Lh,2) = drawobjfacecolor(2);
-          k(drawind(drawindex),Lh,3) = drawobjfacecolor(3);
+          drawind = stepyimini(Lv):stepyimaxi(Lv);
+          drawindex = find(cpsintdist(Lv)<d(drawind,L));
+          d(drawind(drawindex),L) = cpsintdist(Lv);
+          k(drawind(drawindex),L,1) = drawobjfacecolor(1);
+          k(drawind(drawindex),L,2) = drawobjfacecolor(2);
+          k(drawind(drawindex),L,3) = drawobjfacecolor(3);
         endif
       endfor
     endif
