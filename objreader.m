@@ -44,6 +44,11 @@ for n = 1:6
   figure(n+2);clf;imagesc(csdbuffer{n});whitebg([0.8 0.8 0.8]);xlim([1 vres]);ylim([1 vres]);axis off;daspect([1 1]);
   imwrite(csdbuffer{n},['cubemapsketchrenderA' num2str(n) '.png']);
 endfor
+
+[sldbuffer,slzbuffer] = renderobjectspherelinesketch(cubemodel,campost,hres,vres);
+figure(2);clf;imagesc(sldbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
+imwrite(sldbuffer,['spheremaplinesketchrenderA.png']);
+
 [scdbuffer,sczbuffer] = renderobjectspherecamera(cubemodel,campost,hres,vres);
 figure(9);clf;imagesc(scdbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
 imwrite(scdbuffer,['spheremapplanerenderA.png']);
