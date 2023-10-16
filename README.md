@@ -11,7 +11,10 @@ in the form of [x1 y1 z1 (r1); x2 y2 z2 (r2); x3 y3 z3 (r3)]. multiple triangles
 object plotting figure, with sphere boundary volumes around the objects:
 ![plottingtest2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/72c9e8f2-4f8e-4d0e-9880-9631982be965)
 
-equirectangular spheremap 360 degree camera high resolution plane-triangle intersection testing render only.
+objects sphere boundary volume sketch render with plane-sphere intersection line scan:
+![spheremaplinesketchrender27A7](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/60ad37e9-c443-4bf1-b8fd-065af8e62e90)
+
+equirectangular spheremap 360 degree camera high resolution plane-triangle intersection testing render only:
 ![spheremaprender46A](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/1e374fc3-d20e-475f-90ec-963f7bac4fb2)
 
 all cubemap side views rendered using plane-triangle intersections:
