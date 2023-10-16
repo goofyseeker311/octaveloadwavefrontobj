@@ -6,6 +6,6 @@ function [k,d,u] = spheremapplanes(vpos,vres)
   endif
   smvectors = [smvecs -dot(ones(vres,1)*vpos,smvecs,2)]; k = smvectors;
   u = planefromnormalatpoint(vpos,normalizevector(cross(k(1,1:3),k(2,1:3))));
-  smupvects = normalizevector(cross(k(:,1:3),ones(vres,1).*u(1:3)));
+  smupvects = normalizevector(cross(ones(vres,1).*u(1:3),k(:,1:3)));
   d = [smupvects -dot(ones(vres,1)*vpos,smupvects,2)];
 endfunction
