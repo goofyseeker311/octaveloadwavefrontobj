@@ -1,5 +1,5 @@
 function [k,d] = renderobjectspherecamera(vscene,vpos,vhres,vvres)
-  vplanes=spheremapplanes(vpos,vhres);distlmod=10;vverb=true;upvector=[0 0 1];
+  [vplanes,vpdir,vpup]=spheremapplanes(vpos,vhres);distlmod=10;vverb=true;upvector=[0 0 1];
   [vhanglelist,vvanglelist] = spheremapangles(vhres,vvres);
   drawbuffer=zeros(vvres,vhres,3);zbuffer=inf(vvres,vhres);
   for m = 1:size(vscene.objects,2)
@@ -17,10 +17,8 @@ function [k,d] = renderobjectspherecamera(vscene,vpos,vhres,vvres)
       for L = 1:vhres
         pint = pints(L,:); phit = phits(L); renderplane = vplanes(L,:);
         if (phit) yhits(L)+=1;
-          dirvec = cross(upvector,renderplane(1:3));
-          pintv1 = pint(1,1:3); pintv2 = pint(1,4:6);
-          pint1=pintv1-vpos; pint2=pintv2-vpos;
-          pint3=pintv2-pintv1; pint3n=normalizevector(pint3);
+          dirvec = vpdir(L,1:3); pintv1 = pint(1,1:3); pintv2 = pint(1,4:6);
+          pint1=pintv1-vpos; pint2=pintv2-vpos; pint3=pintv2-pintv1; pint3n=normalizevector(pint3);
           vecang1 = signnum(pint1(3)).*vectorangle(pint1,dirvec);
           vecang2 = signnum(pint2(3)).*vectorangle(pint2,dirvec);
           [svecang,svecangi] = sort([vecang1 vecang2]);
@@ -28,8 +26,7 @@ function [k,d] = renderobjectspherecamera(vscene,vpos,vhres,vvres)
           vvanglelista = vvanglelist; vvanglelista(stepyfn) = nan;
           [stepyimin,stepyimini] = min(vvanglelista,[],2);
           [stepyimax,stepyimaxi] = max(vvanglelista,[],2);
-          stepyf = stepyimini:stepyimaxi; vecang12d = svecang(2)-svecang(1);
-          if (vecang12d>180) stepyf = [1:(stepyimini-1) (stepyimaxi+1):vvres]; endif
+          stepyf = stepyimini:stepyimaxi;
           if (!isempty(stepyf))
             alphaang = vectorangle(-pint1,pint3); alphalen = vectorlength(pint2);
             vecmult = alphalen./sind(alphaang); stepanglist = vvanglelist(stepyf)-svecang(1);
