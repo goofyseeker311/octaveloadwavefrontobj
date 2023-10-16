@@ -12,7 +12,7 @@ object plotting figure, with sphere boundary volumes around the objects:
 ![plottingtest2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/72c9e8f2-4f8e-4d0e-9880-9631982be965)
 
 objects sphere boundary volume sketch render with plane-sphere intersection line scan:
-![spheremaplinesketchrender27A7](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/60ad37e9-c443-4bf1-b8fd-065af8e62e90)
+![spheremaplinesketchrender27A8](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/0c33eb4f-aa39-4db4-99ad-4fe013717c3d)
 
 equirectangular spheremap 360 degree camera high resolution plane-triangle intersection testing render only:
 ![spheremaprender46A](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/1e374fc3-d20e-475f-90ec-963f7bac4fb2)
