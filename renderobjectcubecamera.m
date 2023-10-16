@@ -3,6 +3,7 @@ function [k,d] = renderobjectcubecamera(vscene,vpos,vres)
   [cmanglelist,cmsteplist] = cubemapangles(vres);
   for vd = 1:6
     renderplanes=vplanes{vd,2}; dirvec=vpdir{vd,2}(1:3); upvector=vpup{vd,2}(1:3);
+    vposplane = planefromnormalatpoint(vpos,dirvec);
     upvectorplane = planefromnormalatpoint(vpos,upvector);
     drawbuffer=0.5.*ones(vres,vres,3);zbuffer=inf(vres,vres);
     for m = 1:size(vscene.objects,2)
@@ -21,7 +22,6 @@ function [k,d] = renderobjectcubecamera(vscene,vpos,vres)
           pint = pints(L,:); phit = phits(L); renderplane = renderplanes(L,:);
           if (phit) yhits(L)+=1;
             pint1=pint(1,1:3); pint2=pint(1,4:6);
-            vposplane = planefromnormalatpoint(vpos,dirvec);
             vposppdist1 = pointplanedistance(pint1,vposplane);
             vposppdist2 = pointplanedistance(pint2,vposplane);
             if ((vposppdist1>0)||(vposppdist2>0))
