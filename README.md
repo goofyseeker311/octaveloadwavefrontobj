@@ -18,9 +18,9 @@ equirectangular spheremap 360 degree camera high resolution plane-triangle inter
 ![spheremapplanerender27A2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/9bd64b59-4b4b-4e22-8053-8ecd4dbe9f03)
 
 all cubemap side views rendered using plane-triangle intersections:
-![cubemaprender46A1](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/69070172-258e-4dc5-8003-100a11ce8c4d)
-![cubemaprender46A2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/15cf459f-f948-44b1-82c0-b1cde706c7b4)
-![cubemaprender46A3](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/2660e187-40e4-401f-b1c8-dc046b1a4ba3)
-![cubemaprender46A4](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/200e068e-fcf3-43e1-8e9e-b00aacdb6f1f)
-![cubemaprender46A5](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/9f050b03-92ba-49fb-b581-846a4200c86c)
-![cubemaprender46A6](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/40d2f362-501a-4fa3-86e0-98d652123727)
+![cubemapplanerender27A1](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/c99edb2b-cd8a-41a6-8515-d1bb8378f246)
+![cubemapplanerender27A2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/d3c91bf1-8d92-4c31-abf4-0145a13e5edf)
+![cubemapplanerender27A3](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/b39850d7-50d5-4186-89ef-5c7c9bd6296a)
+![cubemapplanerender27A4](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/d7daa34b-6018-493a-a186-de4c60dccbd9)
+![cubemapplanerender27A5](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/df065fe3-b7b3-4b25-9eca-f8a66055cc8b)
+![cubemapplanerender27A6](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/2d9b29a0-c22f-4048-80e0-7c673ca1b457)
