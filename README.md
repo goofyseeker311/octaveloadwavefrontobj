@@ -11,6 +11,9 @@ in the form of [x1 y1 z1 (r1); x2 y2 z2 (r2); x3 y3 z3 (r3)]. multiple triangles
 object plotting figure, with sphere boundary volumes around the objects:
 ![plottingtest2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/72c9e8f2-4f8e-4d0e-9880-9631982be965)
 
+objects sphere boundary volume sketch spheremap render with spheremap angle rectange plot:
+![spheremapsketchrender27A3](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/6744cbaa-d7e9-4bbc-a0af-021466de0211)
+
 objects sphere boundary volume sketch spheremap render with plane-sphere intersection line scan:
 ![spheremaplinesketchrender27A11](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/166387ee-6851-4ce6-a537-28ac7eb69348)
 
