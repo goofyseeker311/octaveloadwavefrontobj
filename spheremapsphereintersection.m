@@ -9,12 +9,13 @@ function [k,d,f] = spheremapsphereintersection(vpos,vsphere,hres,vres)
   k = nan(vspherec,4); k(lveclin,:) = ones(lveclinc,1).*[1 hres 1 vres];
   d(lveclin,1) = true(lveclinc,1);
   if (!isempty(lvecli))
-    smradang = real(asind(vsphere(lvecli,4)./lvecl(lvecli,1)));
-    lookatdir = [0 1 0]; lvech = lvec; lvech(:,3)=0;
+    lookatdir = [0 1 0]; lvech = lvec; lvech(:,3)=0; lvechl = vectorlength(lvech);
+    smhradang = real(asind(vsphere(lvecli,4)./lvechl(lvecli,1)));
+    smvradang = real(asind(vsphere(lvecli,4)./lvecl(lvecli,1)));
     hvecang = signnum(lvech(lvecli,1)).*vectorangle(lvech(lvecli,:),ones(lveclic,1).*lookatdir);
     vvecang = signnum(lvec(lvecli,3)).*vectorangle(lvech(lvecli,:),lvec);
-    hvecangmin = hvecang-smradang;hvecangmax = hvecang+smradang;
-    vvecangmin = vvecang-smradang;vvecangmax = vvecang+smradang;
+    hvecangmin = hvecang-smhradang;hvecangmax = hvecang+smhradang;
+    vvecangmin = vvecang-smvradang;vvecangmax = vvecang+smvradang;
     hvangles = [hvecangmin hvecangmax vvecangmin vvecangmax];
     hvangles(find(hvangles(:,1)<-180),1)+=360; hvangles(find(hvangles(:,2)>180),2)-=360;
     hvanglesi = abs(hvangles(:,2)-hvangles(:,1))<=180;
