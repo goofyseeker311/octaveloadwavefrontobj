@@ -11,12 +11,12 @@ function [k,d,f] = spheremapsphereintersection(vpos,vsphere,hres,vres)
   if (!isempty(lvecli))
     smradang = real(asind(vsphere(lvecli,4)./lvecl(lvecli,1)));
     lookatdir = [0 1 0]; lvech = lvec; lvech(:,3)=0;
-    hvecang = signnum(lvech(lvecli,1)).*vectorangle(lvech(lvecli,:),ones(lveclic,1).*lookatdir(1:3));
+    hvecang = signnum(lvech(lvecli,1)).*vectorangle(lvech(lvecli,:),ones(lveclic,1).*lookatdir);
     vvecang = signnum(lvec(lvecli,3)).*vectorangle(lvech(lvecli,:),lvec);
     hvecangmin = hvecang-smradang;hvecangmax = hvecang+smradang;
     vvecangmin = vvecang-smradang;vvecangmax = vvecang+smradang;
     hvangles = [hvecangmin hvecangmax vvecangmin vvecangmax];
-    hvangles(find(hvangles(:,1)<=-180),1)+=360; hvangles(find(hvangles(:,2)>=180),2)-=360;
+    hvangles(find(hvangles(:,1)<-180),1)+=360; hvangles(find(hvangles(:,2)>180),2)-=360;
     hvanglesi = abs(hvangles(:,2)-hvangles(:,1))<=180;
     hvanglesf=find(hvanglesi); hvanglesfi=find(!hvanglesi);
     hangl = (smhanglesa(lvecli(hvanglesf),:)>=hvangles(hvanglesf,1))&(smhanglesa(lvecli(hvanglesf),:)<=hvangles(hvanglesf,2));
