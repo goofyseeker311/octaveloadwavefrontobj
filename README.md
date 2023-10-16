@@ -15,7 +15,7 @@ objects sphere boundary volume sketch render with plane-sphere intersection line
 ![spheremaplinesketchrender27A11](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/166387ee-6851-4ce6-a537-28ac7eb69348)
 
 equirectangular spheremap 360 degree camera high resolution plane-triangle intersection testing render only:
-![spheremaprender46A](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/1e374fc3-d20e-475f-90ec-963f7bac4fb2)
+![spheremapplanerender27A2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/9bd64b59-4b4b-4e22-8053-8ecd4dbe9f03)
 
 all cubemap side views rendered using plane-triangle intersections:
 ![cubemaprender46A1](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/69070172-258e-4dc5-8003-100a11ce8c4d)
