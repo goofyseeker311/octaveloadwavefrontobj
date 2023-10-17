@@ -29,10 +29,8 @@ function [k,d] = renderobjectspherecamera(vscene,vpos,vhres,vvres)
         cpsintangmin = cpsintangs(:,1); cpsintangmax = cpsintangs(:,2);
         stepyi = (vvanglelist>=cpsintangmin)&(vvanglelist<=cpsintangmax); stepyfn = find(!stepyi);
         vvanglelista = ones(cpshitfc,1).*vvanglelist; vvanglelista(stepyfn) = nan;
-        [stepyimin,stepyimini] = min(vvanglelista,[],2);
-        [stepyimax,stepyimaxi] = max(vvanglelista,[],2);
-        stepyi2 = find(isfinite(stepyimini)&isfinite(stepyimaxi));
-        stepyi2c = size(stepyi2,1);
+        [stepyimin,stepyimini] = min(vvanglelista,[],2); [stepyimax,stepyimaxi] = max(vvanglelista,[],2);
+        stepyi2 = find(isfinite(stepyimin)&isfinite(stepyimax)); stepyi2c = size(stepyi2,1);
         for n = 1:stepyi2c
           Lv = stepyi2(n); L = cpshitf(Lv);
           if (cpsintdirf(n))
