@@ -17,8 +17,11 @@ objects sphere boundary volume sketch spheremap render with angle limit rectangl
 objects sphere boundary volume sketch spheremap render with plane-sphere intersection line scan:
 ![spheremaplinesketchrender27A11](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/166387ee-6851-4ce6-a537-28ac7eb69348)
 
-equirectangular spheremap 360 degree camera high resolution plane-triangle intersection testing render only:
+equirectangular spheremap 360 degree camera high resolution plane-triangle intersection render:
 ![spheremapplanerender29A22](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/10c58fc5-1c20-4322-8ed2-d57d96e90a5b)
+
+equirectangular spheremap 360 degree camera low resolution ray-triangle intersection reference render:
+![spheremapraysrender32A2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/db68773b-ffe5-4e5c-aee8-a139c9d862b7)
 
 objects sphere boundary volume sketch cubemap render with angle limit rectangle plot:
 ![cubemapsketchrender32A2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/d15343df-6968-41b0-97f2-5b9c08509cb9)
