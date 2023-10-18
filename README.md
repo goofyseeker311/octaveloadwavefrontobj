@@ -29,13 +29,8 @@ objects sphere boundary volume sketch cubemap camera render with angle limit rec
 objects sphere boundary volume sketch cubemap camera low resolution ray-triangle intersection reference render:
 ![cubemapraysrender32A3](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/0387dd3f-a952-41ab-ba98-d5c0395e23b2)
 
+cubemap side views rendered using plane-triangle intersections:
+![cubemapplanerender32A3](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/bc7648fd-6647-4302-b93b-50bb251d0ec2)
+
 variable fov projected camera low resolution ray-triangle intersection reference render:
 ![projectedraysrender32A2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/6e814bbd-e759-4662-a869-8ce9a3ef4c3d)
-
-all cubemap side views rendered using plane-triangle intersections:
-![cubemapplanerender27A1](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/c99edb2b-cd8a-41a6-8515-d1bb8378f246)
-![cubemapplanerender27A2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/d3c91bf1-8d92-4c31-abf4-0145a13e5edf)
-![cubemapplanerender27A3](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/b39850d7-50d5-4186-89ef-5c7c9bd6296a)
-![cubemapplanerender27A4](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/d7daa34b-6018-493a-a186-de4c60dccbd9)
-![cubemapplanerender27A5](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/df065fe3-b7b3-4b25-9eca-f8a66055cc8b)
-![cubemapplanerender27A6](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/2d9b29a0-c22f-4048-80e0-7c673ca1b457)
