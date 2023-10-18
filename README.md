@@ -11,10 +11,10 @@ in the form of [x1 y1 z1 (r1); x2 y2 z2 (r2); x3 y3 z3 (r3)]. multiple triangles
 object plotting figure, with sphere boundary volumes around the objects:
 ![plottingtest2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/72c9e8f2-4f8e-4d0e-9880-9631982be965)
 
-objects sphere boundary volume sketch spheremap render with angle limit rectangle plot:
+objects sphere boundary volume sketch spheremap camera render with angle limit rectangle plot:
 ![spheremapsketchrender27A3](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/6744cbaa-d7e9-4bbc-a0af-021466de0211)
 
-objects sphere boundary volume sketch spheremap render with plane-sphere intersection line scan:
+objects sphere boundary volume sketch spheremap camera render with plane-sphere intersection line scan:
 ![spheremaplinesketchrender27A11](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/166387ee-6851-4ce6-a537-28ac7eb69348)
 
 equirectangular spheremap 360 degree camera high resolution plane-triangle intersection render:
@@ -23,8 +23,11 @@ equirectangular spheremap 360 degree camera high resolution plane-triangle inter
 equirectangular spheremap 360 degree camera low resolution ray-triangle intersection reference render:
 ![spheremapraysrender32A5](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/7d0811d1-ed1e-4540-b1f5-d534a280ed9d)
 
-objects sphere boundary volume sketch cubemap render with angle limit rectangle plot:
+objects sphere boundary volume sketch cubemap camera render with angle limit rectangle plot:
 ![cubemapsketchrender32A2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/d15343df-6968-41b0-97f2-5b9c08509cb9)
+
+objects sphere boundary volume sketch cubemap camera low resolution ray-triangle intersection reference render:
+![cubemapraysrender32A2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/d0b061f6-13ae-4e9e-b1e5-a1cc2bd385bb)
 
 all cubemap side views rendered using plane-triangle intersections:
 ![cubemapplanerender27A1](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/c99edb2b-cd8a-41a6-8515-d1bb8378f246)
