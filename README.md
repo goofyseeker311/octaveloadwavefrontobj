@@ -2,7 +2,7 @@
 load/parse wavefront obj 3d model files in gnu octave. any grouping information is ignored.
 
 objreader.m is the test script file. includes extra related 3d library algorithms.
-note: all extra libraries are currently assumed to operate on single vector/point/sphere/etc entity at a time, not arrays.
+note: most extra libraries are currently assumed to operate on stacked multiple vector/point/sphere/etc entity at a time, not only single values.
 also assumes that export from blender to wavefront is z-up, y-forward, x-right and that the mesh is triangulated, with texture coordinates, colors and normals output.
 all vectors, points, spheres and planes are assumed to be in the form of [x y z], [a b c d], and [z y z r] horizontal vectors.
 any arrays of vectors, points, spheres and planes, and normal triangles are assumed to be vertically stacked vectors
