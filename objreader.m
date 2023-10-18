@@ -1,5 +1,5 @@
 clear all; objfilename="testcubemodel4.obj"; #format long;output_precision(16);
-hres = 7680; vres = 2160; hfov = 90; vfov = 67.5; #pvrot = [0 0 0];
+hres = 3840; vres = 1080; hfov = 90; vfov = 67.5; #pvrot = [0 0 0];
 campost = [-2 0.5 1.5]; camdir = normalizevector([1 0 -0.4]);
 camrgt = [0 -1 0]; camup = normalizevector(cross(camrgt,camdir));
 camplane = planefromnormalatpoint(campost,camup);
