@@ -1,7 +1,7 @@
 function [k,d,f,g,p] = renderobjectrayscamera(vscene,vpos,vrays)
   vhres = size(vrays,2); vvres = size(vrays,1); distlmod=10;vverb=true;
   linvrays = reshape(vrays,vhres*vvres,3);
-  drawbuffer=zeros(vvres,vhres,3);zbuffer=inf(vvres,vhres);
+  drawbuffer=0.5.*ones(vvres,vhres,3);zbuffer=inf(vvres,vhres);
   obuffer=nan(vvres,vhres);tbuffer=nan(vvres,vhres);nbuffer=nan(vvres,vhres,4);
   for m = 1:size(vscene.objects,2)
     if (vverb) printf(['m[' num2str(m) ']: ']); endif
