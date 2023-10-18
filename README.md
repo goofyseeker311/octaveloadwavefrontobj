@@ -27,7 +27,7 @@ objects sphere boundary volume sketch cubemap camera render with angle limit rec
 ![cubemapsketchrender32A2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/d15343df-6968-41b0-97f2-5b9c08509cb9)
 
 objects sphere boundary volume sketch cubemap camera low resolution ray-triangle intersection reference render:
-![cubemapraysrender32A2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/d0b061f6-13ae-4e9e-b1e5-a1cc2bd385bb)
+![cubemapraysrender32A3](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/0387dd3f-a952-41ab-ba98-d5c0395e23b2)
 
 all cubemap side views rendered using plane-triangle intersections:
 ![cubemapplanerender27A1](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/c99edb2b-cd8a-41a6-8515-d1bb8378f246)
