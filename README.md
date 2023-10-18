@@ -11,7 +11,7 @@ in the form of [x1 y1 z1 (r1); x2 y2 z2 (r2); x3 y3 z3 (r3)]. multiple triangles
 object plotting figure, with sphere boundary volumes around the objects:
 ![plottingtest2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/72c9e8f2-4f8e-4d0e-9880-9631982be965)
 
-objects sphere boundary volume sketch spheremap render with spheremap angle limit rectangle plot:
+objects sphere boundary volume sketch spheremap render with angle limit rectangle plot:
 ![spheremapsketchrender27A3](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/6744cbaa-d7e9-4bbc-a0af-021466de0211)
 
 objects sphere boundary volume sketch spheremap render with plane-sphere intersection line scan:
@@ -19,6 +19,9 @@ objects sphere boundary volume sketch spheremap render with plane-sphere interse
 
 equirectangular spheremap 360 degree camera high resolution plane-triangle intersection testing render only:
 ![spheremapplanerender29A22](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/10c58fc5-1c20-4322-8ed2-d57d96e90a5b)
+
+objects sphere boundary volume sketch cubemap render with angle limit rectangle plot:
+![cubemapsketchrender31A](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/45d7946e-e805-49ee-9de6-a9d06dcbdd2d)
 
 all cubemap side views rendered using plane-triangle intersections:
 ![cubemapplanerender27A1](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/c99edb2b-cd8a-41a6-8515-d1bb8378f246)
