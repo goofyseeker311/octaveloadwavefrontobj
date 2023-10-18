@@ -1,11 +1,11 @@
 function [k,d] = renderobjectcubecamera(vscene,vpos,vres)
-  [vplanes,vpdir,vpup]=cubemapplanes(vpos,vres);distlmod=10;vverb=true;k={};d={};
+  [vplanes,vpd,vpup]=cubemapplanes(vpos,vres);distlmod=10;vverb=true;k={};d={};
   [cmanglelist,cmsteplist] = cubemapangles(vres);
   for vd = 1:6
-    renderplanes=vplanes{vd,2}; dirvec=vpdir{vd,2}(1:3); upvector=vpup{vd,2}(1:3);
-    vposplane = planefromnormalatpoint(vpos,dirvec);
-    upvectorplane = planefromnormalatpoint(vpos,upvector);
-    drawbuffer=0.5.*ones(vres,vres,3);zbuffer=inf(vres,vres);
+    renderplanes=vplanes{vd,2}; dirvec=vpd{vd,2}(1:3); upvector=vpup{vd,2}(1:3);
+    renderplanesc = size(renderplanes,1); vpdir = cross(renderplanes(:,1:3),ones(renderplanesc,1).*upvector,2);
+    vposplane = planefromnormalatpoint(vpos,dirvec); upvectorplane = planefromnormalatpoint(vpos,upvector);
+    drawbuffer = 0.5.*ones(vres,vres,3); zbuffer = inf(vres,vres);
     for m = 1:size(vscene.objects,2)
       if (vverb) printf(['vd[' num2str(vd) ']m[' num2str(m) ']: ']); endif
       drawobjtriangles = vscene.objects{m}.triangles;
@@ -15,57 +15,45 @@ function [k,d] = renderobjectcubecamera(vscene,vpos,vres)
         drawobjfacecolor = drawobjmaterial.facecolor;
       endif
       for n = 1:size(drawobjtriangles,3)
-        smtriangle = drawobjtriangles(:,1:3,n); yhits = zeros(1,vres);
-        [pints,phits] = planetriangleintersection(renderplanes,smtriangle);
+        smtriangle = drawobjtriangles(:,1:3,n); yhits = 0;
+        [pints,phits,ptuvs,ptinds] = planetriangleintersection(renderplanes,smtriangle);
         [plints,plhits,pldist] = raylineintersection(vpos,upvector,pints);
-        for L = 1:vres
-          pint = pints(L,:); phit = phits(L); renderplane = renderplanes(L,:);
-          if (phit) yhits(L)+=1;
-            pint1=pint(1,1:3); pint2=pint(1,4:6);
-            vposppdist1 = pointplanedistance(pint1,vposplane);
-            vposppdist2 = pointplanedistance(pint2,vposplane);
-            if ((vposppdist1>0)||(vposppdist2>0))
-              pint1a = pint1; pint2a = pint2;
-              if (vposppdist1>0)
-                pintv12 = pint2-pint1;
-                vposrpdist1 = rayplanedistance(pint1,pintv12,vposplane);
-                if ((vposrpdist1>0)&&(vposrpdist1<1))
-                  pint2a = vposrpdist1.*pintv12+pint1;
-                endif
-              elseif (vposppdist2>0)
-                pintv21 = pint1-pint2;
-                vposrpdist2 = rayplanedistance(pint2,pintv21,vposplane);
-                if ((vposrpdist2>0)&&(vposrpdist2<1))
-                  pint1a = vposrpdist2.*pintv21+pint2;
-                endif
-              endif
-              vposppdist1a = pointplanedistance(pint1a,vposplane);
-              vposppdist2a = pointplanedistance(pint2a,vposplane);
-              uvecppdist1a = pointplanedistance(pint1a,upvectorplane);
-              uvecppdist2a = pointplanedistance(pint2a,upvectorplane);
-              pint1 = pint1a-vpos; pint2 = pint2a-vpos;
-              pint3 = pint2a-pint1a; pint3n = normalizevector(pint3);
-              vecang1 = atand(uvecppdist1a./vposppdist1a);
-              vecang2 = atand(uvecppdist2a./vposppdist2a);
-              [svecang,svecangi] = sort([vecang1 vecang2]);
-              svecangf = find((cmanglelist>=svecang(1))&(cmanglelist<=svecang(2)));
-              if (!isempty(svecangf))
-                alphaang = vectorangle(-pint1,pint3); alphalen = vectorlength(pint2);
-                vecmult = alphalen./sind(alphaang); stepanglist = cmanglelist(svecangf)-svecang(1);
-                steplenlist = vecmult.*sind(stepanglist); steppointlist = pint1+steplenlist'.*pint3n;
-                stepveclist = steppointlist-vpos; stepdistlist = vectorlength(stepveclist)';
-                if (svecangi(1)==2) stepdistlist = fliplr(stepdistlist); endif
-                drawind = find(stepdistlist<zbuffer(svecangf,L)');
-                if (!isempty(drawind))
-                  zbuffer(svecangf(drawind),L) = stepdistlist(drawind);
-                  drawbuffer(svecangf(drawind),L,1) = drawobjfacecolor(1);
-                  drawbuffer(svecangf(drawind),L,2) = drawobjfacecolor(2);
-                  drawbuffer(svecangf(drawind),L,3) = drawobjfacecolor(3);
-                endif
-              endif
+        cpshitc=sum(phits); cpshitf=find(phits); cpshitfc=size(cpshitf,1); yhits+=cpshitc;
+        if (!isempty(cpshitf))
+          cpsintvec1 = pints(cpshitf,1:3)-vpos; cpsintvec2 = pints(cpshitf,4:6)-vpos;
+          cpsintdist1 = vectorlength(cpsintvec1); cpsintdist2 = vectorlength(cpsintvec2);
+          vposplanedist1 = pointplanedistance(pints(cpshitf,1:3),vposplane);
+          vposplanedist2 = pointplanedistance(pints(cpshitf,4:6),vposplane);
+          upvectorplanedist1 = pointplanedistance(pints(cpshitf,1:3),upvectorplane);
+          upvectorplanedist2 = pointplanedistance(pints(cpshitf,4:6),upvectorplane);
+          cpsintang1 = atand(upvectorplanedist1./abs(vposplanedist1));
+          cpsintang2 = atand(upvectorplanedist2./abs(vposplanedist2));
+          cpsintang1f = find(vposplanedist1<0); cpsintang1(cpsintang1f)=180-cpsintang1(cpsintang1f);
+          cpsintang2f = find(vposplanedist2<0); cpsintang2(cpsintang2f)=180-cpsintang2(cpsintang2f);
+          cpsintang1ist = [cpsintang1 cpsintang2]; cpsintdistlist = [cpsintdist1 cpsintdist2];
+          [cpsintangs,cpsintangsi] = sort(cpsintang1ist,2);
+          cpsintangmin = cpsintangs(:,1); cpsintangmax = cpsintangs(:,2);
+          stepyi = (cmanglelist>=cpsintangmin)&(cmanglelist<=cpsintangmax); stepyfn = find(!stepyi);
+          cmanglelista = ones(cpshitfc,1).*cmanglelist; cmanglelista(stepyfn) = nan;
+          [stepyimin,stepyimini] = min(cmanglelista,[],2); [stepyimax,stepyimaxi] = max(cmanglelista,[],2);
+          stepyi2 = find(isfinite(stepyimin)&isfinite(stepyimax));
+          stepyi2c = size(stepyi2,1); if (isempty(stepyi2)&&(stepyi2c>0)) stepyi2c=0; endif
+          for n = 1:stepyi2c
+            Lv = stepyi2(n); L = cpshitf(Lv);
+            drawind = stepyimini(Lv):stepyimaxi(Lv); drawindc = size(drawind,2);
+            drawdistmin = cpsintdistlist(cpsintangsi(Lv,1)); drawdistmax = cpsintdistlist(cpsintangsi(Lv,2));
+            drawdist = ones(1,drawindc)*drawdistmin;
+            if (drawindc>1)
+              drawdistdif = drawdistmax-drawdistmin; drawdiststep = drawdistdif./(drawindc-1);
+              drawdist = (drawdistmin:drawdiststep:drawdistmax)';
             endif
-          endif
-        endfor
+            drawindex = find(drawdist<zbuffer(drawind,L));
+            zbuffer(drawind(drawindex),L) = drawdist(drawindex);
+            drawbuffer(drawind(drawindex),L,1) = drawobjfacecolor(1);
+            drawbuffer(drawind(drawindex),L,2) = drawobjfacecolor(2);
+            drawbuffer(drawind(drawindex),L,3) = drawobjfacecolor(3);
+          endfor
+        endif
         yhitc = sum(yhits);
         if (vverb) printf([' ' num2str(yhitc)]); endif
       endfor
