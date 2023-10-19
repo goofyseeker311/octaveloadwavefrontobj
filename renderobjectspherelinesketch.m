@@ -26,8 +26,8 @@ function [k,d] = renderobjectspherelinesketch(vscene,vpos,hres,vres)
       vvanglelista = ones(cpshitfc,1).*smvanglelist; vvanglelista(stepyfn) = nan;
       [stepyimin,stepyimini] = min(vvanglelista,[],2);
       [stepyimax,stepyimaxi] = max(vvanglelista,[],2);
-      stepyi2 = find(isfinite(stepyimini)&isfinite(stepyimaxi));
-      stepyi2c = size(stepyi2,1);
+      stepyi2 = find(isfinite(stepyimin)&isfinite(stepyimax));
+      stepyi2c = size(stepyi2,1); if (isempty(stepyi2)&&(stepyi2c>0)) stepyi2c=0; endif
       for n = 1:stepyi2c
         Lv = stepyi2(n); L = cpshitf(Lv);
         if (cpsintdirf(n))
