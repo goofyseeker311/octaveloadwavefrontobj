@@ -30,4 +30,10 @@ function [k,d] = renderobjectcubesketch(vscene,vpos,vres)
     endif
   endfor
   if (vverb) printf(['\n']); endif
+  k{1} = rot90(k{1},2); d{1} = rot90(d{1},2);
+  k{2} = fliplr(rot90(k{2},2)); d{2} = fliplr(rot90(d{2},2));
+  k{3} = fliplr(rot90(k{3},2)); d{3} = fliplr(rot90(d{3},2));
+  k{4} = rot90(k{4},2); d{4} = rot90(d{4},2);
+  k{5} = rot90(k{5},-1); d{5} = rot90(d{5},-1);
+  k{6} = rot90(flipud(k{6}),1); d{6} = rot90(flipud(d{6}),1);
 endfunction
