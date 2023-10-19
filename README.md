@@ -32,5 +32,8 @@ unit-xyz cubemap camera high resolution plane-triangle intersection render:
 objects sphere boundary volume sketch cubemap camera low resolution ray-triangle intersection reference render:
 ![cubemapraysrender32A3](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/0387dd3f-a952-41ab-ba98-d5c0395e23b2)
 
-variable fov projected camera low resolution ray-triangle intersection reference render:
-![projectedraysrender32A2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/6e814bbd-e759-4662-a869-8ce9a3ef4c3d)
+variable fov projected camera 16:9 very low resolution ray-triangle intersection reference render:
+![projectedraysrender35A2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/08306cbc-5437-407c-b285-dae0f9a5c805)
+
+combined bounce spheremap rays 2x added on top of variable fov projected camera 16:9 render:
+![projectedcomboraysrender35A2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/8e245c3f-1072-43e3-96ae-84e959906144)
