@@ -48,6 +48,7 @@ function [k,d] = renderobjectspherecamera(vscene,vpos,vhres,vvres)
       if (vverb) printf([' ' num2str(yhitc)]); endif
     endfor
     if (vverb) printf(['\n']); endif
-    k = drawbuffer; d = zbuffer;
   endfor
+  k=drawbuffer; d=zbuffer;
+  k=rot90(k,2); d=rot90(d,2);
 endfunction
