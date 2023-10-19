@@ -27,4 +27,5 @@ function [k,d] = renderobjectspheresketch(vscene,vpos,hres,vres)
     endif
   endfor
   if (vverb) printf(['\n']); endif
+  k=flipud(k); d=flipud(d);
 endfunction
