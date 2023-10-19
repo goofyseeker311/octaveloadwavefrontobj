@@ -52,9 +52,18 @@ imwrite(csdbufferL,['cubemapsketchrenderA.png']);
 [sldbuffer,slzbuffer] = renderobjectspherelinesketch(cubemodel,campost,hres,vres);
 figure(4);clf;imagesc(sldbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
 imwrite(sldbuffer,['spheremaplinesketchrenderA.png']);
+[cldbuffer,clzbuffer] = renderobjectcubelinesketch(cubemodel,campost,vres); cldbuffersL = zeros(3*vres,vres*4,3);
+cldbuffersL(vres*1+(1:vres),vres*(3-1)+(1:vres),:) = cldbuffer{1};
+cldbuffersL(vres*1+(1:vres),vres*(2-1)+(1:vres),:) = cldbuffer{2};
+cldbuffersL(vres*1+(1:vres),vres*(1-1)+(1:vres),:) = cldbuffer{3};
+cldbuffersL(vres*1+(1:vres),vres*(4-1)+(1:vres),:) = cldbuffer{4};
+cldbuffersL(vres*0+(1:vres),vres*(3-1)+(1:vres),:) = cldbuffer{5};
+cldbuffersL(vres*2+(1:vres),vres*(3-1)+(1:vres),:) = cldbuffer{6};
+figure(5);clf;imagesc(cldbuffersL);whitebg([0.8 0.8 0.8]);xlim([1 vres*4]);ylim([1 vres*3]);axis off;daspect([1 1]);
+imwrite(cldbuffersL,['cubemaplinesketchrenderA.png']);
 
 [scdbuffer,sczbuffer] = renderobjectspherecamera(cubemodel,campost,hres,vres);
-figure(5);clf;imagesc(scdbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
+figure(6);clf;imagesc(scdbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
 imwrite(scdbuffer,['spheremapplanerenderA.png']);
 [cmdbuffers,cmzbuffers] = renderobjectcubecamera(cubemodel,campost,vres); cmdbuffersL = zeros(3*vres,vres*4,3);
 cmdbuffersL(vres*1+(1:vres),vres*(3-1)+(1:vres),:) = cmdbuffers{1};
@@ -63,11 +72,11 @@ cmdbuffersL(vres*1+(1:vres),vres*(1-1)+(1:vres),:) = cmdbuffers{3};
 cmdbuffersL(vres*1+(1:vres),vres*(4-1)+(1:vres),:) = cmdbuffers{4};
 cmdbuffersL(vres*0+(1:vres),vres*(3-1)+(1:vres),:) = cmdbuffers{5};
 cmdbuffersL(vres*2+(1:vres),vres*(3-1)+(1:vres),:) = cmdbuffers{6};
-figure(6);clf;imagesc(cmdbuffersL);whitebg([0.8 0.8 0.8]);xlim([1 vres*4]);ylim([1 vres*3]);axis off;daspect([1 1]);
+figure(7);clf;imagesc(cmdbuffersL);whitebg([0.8 0.8 0.8]);xlim([1 vres*4]);ylim([1 vres*3]);axis off;daspect([1 1]);
 imwrite(cmdbuffersL,['cubemapplanerenderA.png']);
 
 [smrdbuffer,smrzbuffer] = renderobjectrayscamera(cubemodel,campost,spheremaprays);
-figure(7);clf;imagesc(smrdbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
+figure(8);clf;imagesc(smrdbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
 imwrite(smrdbuffer,['spheremapraysrenderA.png']);
 cmrdbuffers = {}; cmrzbuffers = {};
 for n = 1:6; [cmrdbuffers{n},cmrzbuffers{n}] = renderobjectrayscamera(cubemodel,campost,cubemaprays{n}); endfor
@@ -78,13 +87,13 @@ cmrdbuffersL(vres*1+(1:vres),vres*(1-1)+(1:vres),:) = fliplr(rot90(cmrdbuffers{3
 cmrdbuffersL(vres*1+(1:vres),vres*(4-1)+(1:vres),:) = fliplr(rot90(cmrdbuffers{4},-1));
 cmrdbuffersL(vres*0+(1:vres),vres*(3-1)+(1:vres),:) = fliplr(rot90(cmrdbuffers{6},-1));
 cmrdbuffersL(vres*2+(1:vres),vres*(3-1)+(1:vres),:) = fliplr(rot90(cmrdbuffers{5},-1));
-figure(8);clf;imagesc(cmrdbuffersL);whitebg([0.8 0.8 0.8]);xlim([1 vres*4]);ylim([1 vres*3]);axis off;daspect([1 1]);
+figure(9);clf;imagesc(cmrdbuffersL);whitebg([0.8 0.8 0.8]);xlim([1 vres*4]);ylim([1 vres*3]);axis off;daspect([1 1]);
 imwrite(cmrdbuffersL,['cubemapraysrenderA.png']);
 
 [prrdbuffer,prrzbuffer,objbuffer,normbuffer,pointbuffer] = renderobjectrayscamera(cubemodel,campost,projrays);
-figure(9);clf;imagesc(prrdbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
+figure(10);clf;imagesc(prrdbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
 imwrite(prrdbuffer,['projectedraysrenderA.png']);
 bordbuffer = renderobjectraysbouncecamera(cubemodel,pointbuffer,spheremaprays,objbuffer,normbuffer);
 combobuffer = prrdbuffer+bordbuffer.*2;
-figure(10);clf;imagesc(combobuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
+figure(11);clf;imagesc(combobuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
 imwrite(combobuffer,['projectedcomboraysrenderA.png']);
