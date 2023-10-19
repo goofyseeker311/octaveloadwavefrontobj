@@ -42,4 +42,5 @@ function [k,d] = renderobjectspherelinesketch(vscene,vpos,hres,vres)
     endif
   endfor
   if (vverb) printf(['\n']); endif
+  k=rot90(k,2); d=rot90(d,2);
 endfunction
