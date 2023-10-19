@@ -26,6 +26,9 @@ equirectangular spheremap 360 degree camera low resolution ray-triangle intersec
 objects sphere boundary volume sketch cubemap camera render with angle limit rectangle plot:
 ![cubemapsketchrender32A4](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/1a4a570a-193e-43c3-aa48-300d36d388d7)
 
+objects sphere boundary volume sketch cubemap camera render with plane-sphere intersection line scan:
+![cubemaplinesketchrender35A2](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/925f4afd-bac3-482f-8175-099fda4e3c59)
+
 unit-xyz cubemap camera high resolution plane-triangle intersection render:
 ![cubemapplanerender32A5](https://github.com/goofyseeker311/octaveloadwavefrontobj/assets/19920254/cc3f3e37-c825-4a63-b594-1ae31cfb3283)
 
