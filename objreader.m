@@ -85,5 +85,6 @@ imwrite(cmrdbuffersL,['cubemapraysrenderA.png']);
 figure(9);clf;imagesc(prrdbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
 imwrite(prrdbuffer,['projectedraysrenderA.png']);
 bordbuffer = renderobjectraysbouncecamera(cubemodel,pointbuffer,spheremaprays,objbuffer,normbuffer);
-figure(10);clf;imagesc(bordbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
-imwrite(bordbuffer,['projectedbounceraysrenderA.png']);
+combobuffer = prrdbuffer+bordbuffer.*2;
+figure(10);clf;imagesc(combobuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
+imwrite(combobuffer,['projectedcomboraysrenderA.png']);
