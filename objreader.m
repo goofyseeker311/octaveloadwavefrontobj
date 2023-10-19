@@ -67,26 +67,23 @@ figure(6);clf;imagesc(cmdbuffersL);whitebg([0.8 0.8 0.8]);xlim([1 vres*4]);ylim(
 imwrite(cmdbuffersL,['cubemapplanerenderA.png']);
 
 [smrdbuffer,smrzbuffer] = renderobjectrayscamera(cubemodel,campost,spheremaprays);
-smrdbuffer=rot90(smrdbuffer,2); smrzbuffer=rot90(smrzbuffer,2);
 figure(7);clf;imagesc(smrdbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
 imwrite(smrdbuffer,['spheremapraysrenderA.png']);
 cmrdbuffers = {}; cmrzbuffers = {};
 for n = 1:6; [cmrdbuffers{n},cmrzbuffers{n}] = renderobjectrayscamera(cubemodel,campost,cubemaprays{n}); endfor
 cmrdbuffersL = zeros(3*vres,vres*4,3);
-cmrdbuffersL(vres*1+(1:vres),vres*(3-1)+(1:vres),:) = fliplr(rot90(cmrdbuffers{1},1));
-cmrdbuffersL(vres*1+(1:vres),vres*(2-1)+(1:vres),:) = fliplr(rot90(cmrdbuffers{2},1));
-cmrdbuffersL(vres*1+(1:vres),vres*(1-1)+(1:vres),:) = fliplr(rot90(cmrdbuffers{3},1));
-cmrdbuffersL(vres*1+(1:vres),vres*(4-1)+(1:vres),:) = flipud(rot90(cmrdbuffers{4},-1));
-cmrdbuffersL(vres*0+(1:vres),vres*(3-1)+(1:vres),:) = fliplr(rot90(cmrdbuffers{6},1));
-cmrdbuffersL(vres*2+(1:vres),vres*(3-1)+(1:vres),:) = fliplr(rot90(cmrdbuffers{5},1));
+cmrdbuffersL(vres*1+(1:vres),vres*(3-1)+(1:vres),:) = fliplr(rot90(cmrdbuffers{1},-1));
+cmrdbuffersL(vres*1+(1:vres),vres*(2-1)+(1:vres),:) = fliplr(rot90(cmrdbuffers{2},-1));
+cmrdbuffersL(vres*1+(1:vres),vres*(1-1)+(1:vres),:) = fliplr(rot90(cmrdbuffers{3},-1));
+cmrdbuffersL(vres*1+(1:vres),vres*(4-1)+(1:vres),:) = fliplr(rot90(cmrdbuffers{4},-1));
+cmrdbuffersL(vres*0+(1:vres),vres*(3-1)+(1:vres),:) = fliplr(rot90(cmrdbuffers{6},-1));
+cmrdbuffersL(vres*2+(1:vres),vres*(3-1)+(1:vres),:) = fliplr(rot90(cmrdbuffers{5},-1));
 figure(8);clf;imagesc(cmrdbuffersL);whitebg([0.8 0.8 0.8]);xlim([1 vres*4]);ylim([1 vres*3]);axis off;daspect([1 1]);
 imwrite(cmrdbuffersL,['cubemapraysrenderA.png']);
 
 [prrdbuffer,prrzbuffer,objbuffer,normbuffer,pointbuffer] = renderobjectrayscamera(cubemodel,campost,projrays);
-prrdbuffer=rot90(prrdbuffer,2); prrzbuffer=rot90(prrzbuffer,2);
 figure(9);clf;imagesc(prrdbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
 imwrite(prrdbuffer,['projectedraysrenderA.png']);
 bordbuffer = renderobjectraysbouncecamera(cubemodel,pointbuffer,spheremaprays,objbuffer,normbuffer);
-bordbuffer=rot90(bordbuffer,2);
 figure(10);clf;imagesc(bordbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
 imwrite(bordbuffer,['projectedbounceraysrenderA.png']);

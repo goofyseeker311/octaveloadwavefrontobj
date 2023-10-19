@@ -31,4 +31,5 @@ function [k,d,f,g,p] = renderobjectrayscamera(vscene,vpos,vrays)
   endfor
   k = drawbuffer; d = zbuffer; f = obuffer; f(:,:,2) = tbuffer; g = nbuffer;
   p=ones(vvres,vhres).*vpos(1);p(:,:,2)=vpos(2);p(:,:,3)=vpos(3);p+=zbuffer.*vrays;
+  k=rot90(k,2); d=rot90(d,2); f=rot90(f,2); g=rot90(g,2); p=rot90(p,2);
 endfunction
