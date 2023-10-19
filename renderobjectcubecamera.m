@@ -61,4 +61,11 @@ function [k,d] = renderobjectcubecamera(vscene,vpos,vres)
     endfor
     k{vd} = drawbuffer; d{vd} = zbuffer;
   endfor
+  ks=k{5};k{5}=k{6};k{6}=ks; ds=d{5};d{5}=d{6};d{6}=ds;
+  k{1}=fliplr(k{1}); d{1}=fliplr(d{1});
+  k{2}=fliplr(k{2}); d{2}=fliplr(d{2});
+  k{3}=fliplr(k{3}); d{3}=fliplr(d{3});
+  k{4}=fliplr(k{4}); d{4}=fliplr(d{4});
+  k{5}=fliplr(k{5}); d{5}=fliplr(d{5});
+  k{6}=fliplr(k{6}); d{6}=fliplr(d{6});
 endfunction

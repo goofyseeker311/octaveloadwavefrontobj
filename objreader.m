@@ -36,36 +36,33 @@ figure(1);clf;whitebg([0.8 0.8 0.8]);plotobjectsphere(cubemodel,campost);view(3)
 saveas(1,"sceneobjectsrenderA.png");
 
 [ssdbuffer,sszbuffer] = renderobjectspheresketch(cubemodel,campost,hres,vres);
-ssdbuffer=flipud(ssdbuffer); sszbuffer=flipud(sszbuffer);
 figure(2);clf;imagesc(ssdbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
 imwrite(ssdbuffer,['spheremapsketchrenderA.png']);
 
 [csdbuffer,cszbuffer] = renderobjectcubesketch(cubemodel,campost,vres); csdbufferL = zeros(3*vres,vres*4,3);
-csdbufferL(vres*1+(1:vres),vres*(3-1)+(1:vres),:) = rot90(csdbuffer{1},2);
-csdbufferL(vres*1+(1:vres),vres*(2-1)+(1:vres),:) = fliplr(rot90(csdbuffer{2},2));
-csdbufferL(vres*1+(1:vres),vres*(1-1)+(1:vres),:) = fliplr(rot90(csdbuffer{3},2));
-csdbufferL(vres*1+(1:vres),vres*(4-1)+(1:vres),:) = rot90(csdbuffer{4},2);
-csdbufferL(vres*0+(1:vres),vres*(3-1)+(1:vres),:) = rot90(csdbuffer{5},-1);
-csdbufferL(vres*2+(1:vres),vres*(3-1)+(1:vres),:) = rot90(flipud(csdbuffer{6}),1);
+csdbufferL(vres*1+(1:vres),vres*(3-1)+(1:vres),:) = csdbuffer{1};
+csdbufferL(vres*1+(1:vres),vres*(2-1)+(1:vres),:) = csdbuffer{2};
+csdbufferL(vres*1+(1:vres),vres*(1-1)+(1:vres),:) = csdbuffer{3};
+csdbufferL(vres*1+(1:vres),vres*(4-1)+(1:vres),:) = csdbuffer{4};
+csdbufferL(vres*0+(1:vres),vres*(3-1)+(1:vres),:) = csdbuffer{5};
+csdbufferL(vres*2+(1:vres),vres*(3-1)+(1:vres),:) = csdbuffer{6};
 figure(3);clf;imagesc(csdbufferL);whitebg([0.8 0.8 0.8]);xlim([1 vres*4]);ylim([1 vres*3]);axis off;daspect([1 1]);
 imwrite(csdbufferL,['cubemapsketchrenderA.png']);
 
 [sldbuffer,slzbuffer] = renderobjectspherelinesketch(cubemodel,campost,hres,vres);
-sldbuffer=rot90(sldbuffer,2); slzbuffer=rot90(slzbuffer,2);
 figure(4);clf;imagesc(sldbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
 imwrite(sldbuffer,['spheremaplinesketchrenderA.png']);
 
 [scdbuffer,sczbuffer] = renderobjectspherecamera(cubemodel,campost,hres,vres);
-scdbuffer=rot90(scdbuffer,2); sczbuffer=rot90(sczbuffer,2);
 figure(5);clf;imagesc(scdbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
 imwrite(scdbuffer,['spheremapplanerenderA.png']);
 [cmdbuffers,cmzbuffers] = renderobjectcubecamera(cubemodel,campost,vres); cmdbuffersL = zeros(3*vres,vres*4,3);
-cmdbuffersL(vres*1+(1:vres),vres*(3-1)+(1:vres),:) = fliplr(rot90(cmdbuffers{1},0));
-cmdbuffersL(vres*1+(1:vres),vres*(2-1)+(1:vres),:) = fliplr(rot90(cmdbuffers{2},0));
-cmdbuffersL(vres*1+(1:vres),vres*(1-1)+(1:vres),:) = fliplr(rot90(cmdbuffers{3},0));
-cmdbuffersL(vres*1+(1:vres),vres*(4-1)+(1:vres),:) = fliplr(rot90(cmdbuffers{4},0));
-cmdbuffersL(vres*0+(1:vres),vres*(3-1)+(1:vres),:) = fliplr(rot90(cmdbuffers{6},0));
-cmdbuffersL(vres*2+(1:vres),vres*(3-1)+(1:vres),:) = fliplr(cmdbuffers{5});
+cmdbuffersL(vres*1+(1:vres),vres*(3-1)+(1:vres),:) = cmdbuffers{1};
+cmdbuffersL(vres*1+(1:vres),vres*(2-1)+(1:vres),:) = cmdbuffers{2};
+cmdbuffersL(vres*1+(1:vres),vres*(1-1)+(1:vres),:) = cmdbuffers{3};
+cmdbuffersL(vres*1+(1:vres),vres*(4-1)+(1:vres),:) = cmdbuffers{4};
+cmdbuffersL(vres*0+(1:vres),vres*(3-1)+(1:vres),:) = cmdbuffers{5};
+cmdbuffersL(vres*2+(1:vres),vres*(3-1)+(1:vres),:) = cmdbuffers{6};
 figure(6);clf;imagesc(cmdbuffersL);whitebg([0.8 0.8 0.8]);xlim([1 vres*4]);ylim([1 vres*3]);axis off;daspect([1 1]);
 imwrite(cmdbuffersL,['cubemapplanerenderA.png']);
 
