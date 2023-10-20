@@ -38,7 +38,6 @@ saveas(1,"sceneobjectsrenderA.png");
 [ssdbuffer,sszbuffer] = renderobjectspheresketch(cubemodel,campost,hres,vres);
 figure(2);clf;imagesc(ssdbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
 imwrite(ssdbuffer,['spheremapsketchrenderA.png']);
-
 [csdbuffer,cszbuffer] = renderobjectcubesketch(cubemodel,campost,vres); csdbufferL = zeros(3*vres,vres*4,3);
 csdbufferL(vres*1+(1:vres),vres*(3-1)+(1:vres),:) = csdbuffer{1};
 csdbufferL(vres*1+(1:vres),vres*(2-1)+(1:vres),:) = csdbuffer{2};
