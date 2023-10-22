@@ -48,10 +48,10 @@ csdbufferL(vres*2+(1:vres),vres*(3-1)+(1:vres),:) = csdbuffer{6};
 figure(3);clf;imagesc(csdbufferL);whitebg([0.8 0.8 0.8]);xlim([1 vres*4]);ylim([1 vres*3]);axis off;daspect([1 1]);
 imwrite(csdbufferL,['cubemapsketchrenderA.png']);
 
-[sldbuffer,slzbuffer] = renderobjectspherelinesketch(cubemodel,campost,hres,vres);
+[sldbuffer,slzbuffer] = renderobjectspherelinesketch(cubemodel,campost,hres,vres,pvrot);
 figure(4);clf;imagesc(sldbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
 imwrite(sldbuffer,['spheremaplinesketchrenderA.png']);
-[cldbuffer,clzbuffer] = renderobjectcubelinesketch(cubemodel,campost,vres); cldbuffersL = zeros(3*vres,vres*4,3);
+[cldbuffer,clzbuffer] = renderobjectcubelinesketch(cubemodel,campost,vres,pvrot); cldbuffersL = zeros(3*vres,vres*4,3);
 cldbuffersL(vres*1+(1:vres),vres*(3-1)+(1:vres),:) = cldbuffer{1};
 cldbuffersL(vres*1+(1:vres),vres*(2-1)+(1:vres),:) = cldbuffer{2};
 cldbuffersL(vres*1+(1:vres),vres*(1-1)+(1:vres),:) = cldbuffer{3};

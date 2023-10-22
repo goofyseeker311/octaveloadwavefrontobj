@@ -1,6 +1,6 @@
-function [k,d] = renderobjectspherelinesketch(vscene,vpos,hres,vres)
+function [k,d] = renderobjectspherelinesketch(vscene,vpos,hres,vres,vrot)
   distlmod=10;vverb=true;k=[];d=[]; [smhanglelist,smvanglelist] = spheremapangles(hres,vres);
-  [csplanes,cspd,cspu] = spheremapplanes(vpos,hres);
+  [csplanes,cspd,cspu] = spheremapplanes(vpos,hres,vrot);
   k = 0.5.*ones(vres,hres,3); d = inf(vres,hres);
   if (vverb) printf(['m:']); endif
   for m = 1:size(vscene.objects,2)

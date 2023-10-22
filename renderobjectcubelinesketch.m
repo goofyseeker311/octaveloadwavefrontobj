@@ -1,6 +1,6 @@
-function [k,d] = renderobjectcubelinesketch(vscene,vpos,vres)
+function [k,d] = renderobjectcubelinesketch(vscene,vpos,vres,vrot)
   distlmod=10;vverb=true;k={};d={}; [cmanglelist,cmsteplist] = cubemapangles(vres);
-  [cvplanes,cvpd,cvpup] = cubemapplanes(vpos,vres);
+  [cvplanes,cvpd,cvpup] = cubemapplanes(vpos,vres,vrot);
   for n = 1:6
     k{n} = 0.5.*ones(vres,vres,3); d{n} = inf(vres,vres);
   endfor
