@@ -1,5 +1,5 @@
 clear all; objfilename="testcubemodel4.obj"; #format long;output_precision(16);
-hres = 384; vres = 108; hfov = 90; vfov = 67.5; #pvrot = [0 0 0];
+hres = 384; vres = 108; hfov = 90; vfov = 67.5; pvrot = [-10 0 0];
 campost = [-2 0.5 1.5]; camdir = normalizevector([1 0 -0.4]);
 camrgt = [0 -1 0]; camup = normalizevector(cross(camrgt,camdir));
 camplane = planefromnormalatpoint(campost,camup);
@@ -24,7 +24,7 @@ vecang = vectorangle(camdir,campost);
 [hangles,hstep,vangles,vstep,dasp,aasp]=projectedangles(hres,vres,hfov,vfov);
 [cmplanes,cmpd,cmpu,cmpr] = cubemapplanes(campost,vres);
 [smplanes,smpd,smpu] = spheremapplanes(campost,hres);
-[prplanes,prpd,prpu,prpdir] = projectedplanes(campost,hres,vres,hfov,vfov);
+[prplanes,prpd,prpu,prpdir] = projectedplanes(campost,hres,vres,hfov,vfov,pvrot);
 camptvecs = planetangentvectors(campost,camplane);
 [dbout,zbout]=mergedrawbuffers(zeros(2,2,3),[1 1;2 2],ones(2,2,3),[0.5 1.5;2.5 1.5]);
 projrays = projectedrays(hres,vres,hfov,vfov);
@@ -73,7 +73,7 @@ cmdbuffersL(vres*0+(1:vres),vres*(3-1)+(1:vres),:) = cmdbuffers{5};
 cmdbuffersL(vres*2+(1:vres),vres*(3-1)+(1:vres),:) = cmdbuffers{6};
 figure(7);clf;imagesc(cmdbuffersL);whitebg([0.8 0.8 0.8]);xlim([1 vres*4]);ylim([1 vres*3]);axis off;daspect([1 1]);
 imwrite(cmdbuffersL,['cubemapplanerenderA.png']);
-[pcdbuffer,pczbuffer] = renderobjectprojectedcamera(cubemodel,campost,hres,vres,hfov,vfov);
+[pcdbuffer,pczbuffer] = renderobjectprojectedcamera(cubemodel,campost,hres,vres,hfov,vfov,pvrot);
 figure(8);clf;imagesc(pcdbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
 imwrite(pcdbuffer,['projectedplanerenderA.png']);
 

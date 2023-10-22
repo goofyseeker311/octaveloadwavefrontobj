@@ -1,7 +1,7 @@
-function [k,d] = renderobjectprojectedcamera(vscene,vpos,hres,vres,hfov,vfov)
-  [prplanes,prpd,prpu,prpdir]=projectedplanes(vpos,hres,vres,hfov,vfov); distlmod=10;vverb=true;k={};d={};
+function [k,d] = renderobjectprojectedcamera(vscene,vpos,hres,vres,hfov,vfov,vrot)
+  [prplanes,prpd,prpu,prpdir]=projectedplanes(vpos,hres,vres,hfov,vfov,vrot);distlmod=10;vverb=true;k={};d={};
   [prhanglelist,prhsteplist,prvanglelist,prvsteplist,dasp,aasp]=projectedangles(hres,vres,hfov,vfov);
-  renderplanes=prplanes{1,1}; dirvec=prpd{1,1}(1:3); upvector=prpu{1,1}(1:3);
+  renderplanes=prplanes{1}; dirvec=prpd{1}(1:3); upvector=prpu{1}(1:3);
   renderplanesc = size(renderplanes,1); vpdir = cross(renderplanes(:,1:3),ones(renderplanesc,1).*upvector,2);
   vposplane = planefromnormalatpoint(vpos,dirvec); upvectorplane = planefromnormalatpoint(vpos,upvector);
   drawbuffer = 0.5.*ones(vres,hres,3); zbuffer = inf(vres,hres);
