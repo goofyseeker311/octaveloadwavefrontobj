@@ -1,8 +1,8 @@
-function [k,d] = renderobjectcubecamera(vscene,vpos,vres)
-  [vplanes,vpd,vpup]=cubemapplanes(vpos,vres);distlmod=10;vverb=true;k={};d={};
+function [k,d] = renderobjectcubecamera(vscene,vpos,vres,vrot)
+  [cpplanes,cppd,cppu,cppr]=cubemapplanes(vpos,vres,vrot);distlmod=10;vverb=true;k={};d={};
   [cmanglelist,cmsteplist] = cubemapangles(vres);
   for vd = 1:6
-    renderplanes=vplanes{vd,2}; dirvec=vpd{vd,2}(1:3); upvector=vpup{vd,2}(1:3);
+    renderplanes=cpplanes{vd,2}; dirvec=cppd{vd,2}(1:3); upvector=cppu{vd,2}(1:3);
     renderplanesc = size(renderplanes,1); vpdir = cross(renderplanes(:,1:3),ones(renderplanesc,1).*upvector,2);
     vposplane = planefromnormalatpoint(vpos,dirvec); upvectorplane = planefromnormalatpoint(vpos,upvector);
     drawbuffer = 0.5.*ones(vres,vres,3); zbuffer = inf(vres,vres);
