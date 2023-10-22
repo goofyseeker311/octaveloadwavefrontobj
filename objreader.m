@@ -23,7 +23,7 @@ vecang = vectorangle(camdir,campost);
 [smhanglelist,smvanglelist] = spheremapangles(hres,vres);
 [hangles,hstep,vangles,vstep,dasp,aasp]=projectedangles(hres,vres,hfov,vfov);
 [cmplanes,cmpd,cmpu,cmpr] = cubemapplanes(campost,vres,pvrot);
-[smplanes,smpd,smpu] = spheremapplanes(campost,hres);
+[smplanes,smpd,smpu] = spheremapplanes(campost,hres,pvrot);
 [prplanes,prpd,prpu,prpdir] = projectedplanes(campost,hres,vres,hfov,vfov,pvrot);
 camptvecs = planetangentvectors(campost,camplane);
 [dbout,zbout]=mergedrawbuffers(zeros(2,2,3),[1 1;2 2],ones(2,2,3),[0.5 1.5;2.5 1.5]);
@@ -61,7 +61,7 @@ cldbuffersL(vres*2+(1:vres),vres*(3-1)+(1:vres),:) = cldbuffer{6};
 figure(5);clf;imagesc(cldbuffersL);whitebg([0.8 0.8 0.8]);xlim([1 vres*4]);ylim([1 vres*3]);axis off;daspect([1 1]);
 imwrite(cldbuffersL,['cubemaplinesketchrenderA.png']);
 
-[scdbuffer,sczbuffer] = renderobjectspherecamera(cubemodel,campost,hres,vres);
+[scdbuffer,sczbuffer] = renderobjectspherecamera(cubemodel,campost,hres,vres,pvrot);
 figure(6);clf;imagesc(scdbuffer);whitebg([0.8 0.8 0.8]);xlim([1 hres]);ylim([1 vres]);axis off;daspect([1 1]);
 imwrite(scdbuffer,['spheremapplanerenderA.png']);
 [cmdbuffers,cmzbuffers] = renderobjectcubecamera(cubemodel,campost,vres,pvrot); cmdbuffersL = zeros(3*vres,vres*4,3);

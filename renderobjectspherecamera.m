@@ -1,5 +1,5 @@
-function [k,d] = renderobjectspherecamera(vscene,vpos,vhres,vvres)
-  [vplanes,vpdir,vpup]=spheremapplanes(vpos,vhres);distlmod=10;vverb=true;upvector=[0 0 1];
+function [k,d] = renderobjectspherecamera(vscene,vpos,vhres,vvres,vvrot)
+  [vplanes,vpdir,vpup]=spheremapplanes(vpos,vhres,vvrot);distlmod=10;vverb=true;upvector=vpup(1:3);
   [vhanglelist,vvanglelist] = spheremapangles(vhres,vvres);
   drawbuffer=0.5.*ones(vvres,vhres,3);zbuffer=inf(vvres,vhres);
   for m = 1:size(vscene.objects,2)
