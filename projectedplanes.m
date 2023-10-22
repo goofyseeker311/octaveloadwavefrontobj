@@ -3,18 +3,18 @@ function [k,d,u,r] = projectedplanes(vpos,vhres,vvres,vhfov,vvfov,vvrot)
   if (isempty(prpl)||(size(prpl{1},1)!=vhres)||(size(prpl{2},1)!=vvres))
     [hangles,hstep,vangles,vstep,dasp,aasp]=projectedangles(vhres,vvres,vhfov,vvfov);
     hfwdvectors = [ones(vhres,1) hstep' zeros(vhres,1)];
-    hfwdvectors = hfwdvectors./sqrt(dot(hfwdvectors,hfwdvectors,2));
+    hfwdvectors = hfwdvectors./sqrt(vectorlength(hfwdvectors));
     hprojrgtvec = [0 0 1]; hprojdirvec = [1 0 0];
     hprojrgt = (ones(vhres,1)*hprojrgtvec);
     hprojup = cross(hprojrgt',hfwdvectors')';
-    hprojup = hprojup./sqrt(dot(hprojup,hprojup,2));
+    hprojup = hprojup./sqrt(vectorlength(hprojup));
     hprojupx = (rotationmatrix(0,0,180)*hprojup')';
     vfwdvectors = [ones(vvres,1) zeros(vvres,1) vstep'];
-    vfwdvectors = vfwdvectors./sqrt(dot(vfwdvectors,vfwdvectors,2));
+    vfwdvectors = vfwdvectors./sqrt(vectorlength(vfwdvectors));
     vprojrgtvec = [0 -1 0]; vprojdirvec = [1 0 0];
     vprojrgt = (ones(vvres,1)*vprojrgtvec);
     vprojup = cross(vprojrgt',vfwdvectors')';
-    vprojup = vprojup./sqrt(dot(vprojup,vprojup,2));
+    vprojup = vprojup./sqrt(vectorlength(vprojup));
     vprojupx = (rotationmatrix(0,0,180)*vprojup')';
     prpl = {hprojupx vprojupx hprojdirvec vprojdirvec hprojrgtvec vprojrgtvec hfwdvectors vfwdvectors};
   endif
