@@ -11,6 +11,7 @@ ppdist = pointplanedistance(campost,trplane);
 rpdist = rayplanedistance(campost,camdir,trplane);
 [trsphere] = trianglecircumsphere(triangle);
 [pcsphere] = pointcloudcircumsphere(cubemodel.vertexlist(1:8,:));
+[epk,epd,epf,epu,epr,epv] = ellipsoidpoint(campost,[45 0 0],[0.5 1 2],[0 0 0]);
 sgn = signnum([-1 0 1]);
 vecang = vectorangle(camdir,campost);
 [trint,trhit,trdist,truvs,trhits]=raytriangleintersection(campost,camdir,triangle);
