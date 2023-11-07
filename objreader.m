@@ -6,6 +6,7 @@ camplane = planefromnormalatpoint(campost,camup);
 triangle = [1 1 0;1 0 1;1 0 0];
 veclen = vectorlength(camdir);
 cubemodel = loadwavefrontobjfile(objfilename);
+aabb = axisalignedboundingbox(cubemodel.vertexlist);
 trplane = planefrompoints(triangle);
 ppdist = pointplanedistance(campost,trplane);
 rpdist = rayplanedistance(campost,camdir,trplane);
