@@ -13,6 +13,8 @@ function [k] = sortsphereintersection(vsphere)
     xssAsLif = xssAsi2(xssAsLir(n,1):xssAsLir(n,2));
     yssAsLif = yssAsi2(yssAsLir(n,1):yssAsLir(n,2));
     zssAsLif = zssAsi2(zssAsLir(n,1):zssAsLir(n,2));
-    k{n} = setdiff(intersect(intersect(xssAsLif,yssAsLif),zssAsLif),n);
+    xyzssAsLif = setdiff(intersect(intersect(xssAsLif,yssAsLif),zssAsLif),n);
+    [sspint,sspdist,ssphit] = spheresphereintersection(vsphere(xyzssAsLif,:),vsphere(n,:));
+    ssphitf = find(ssphit); k{n} = xyzssAsLif(ssphitf);
   endfor
 endfunction

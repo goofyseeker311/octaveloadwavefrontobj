@@ -21,6 +21,7 @@ rpdist = rayplanedistance(campost,camdir,trplane);
 [epk,epd,epf,epu,epr,epv] = ellipsoidpoint(campost,[45 0 0],[0.5 1 2],[0 0 0]);
 sgn = signnum([-1 0 1]);
 vecang = vectorangle(camdir,campost);
+[sspint,sspdist,ssphit] = spheresphereintersection(ospheres,ospheres(2,:));
 [trint,trhit,trdist,truvs,trhits]=raytriangleintersection(campost,camdir,triangle);
 [cubeint,cubehit,cubedist] = cubemapsphereintersection(campost,pcsphere,vres);
 [sphereint,spherehit,spheredist] = spheremapsphereintersection(campost,pcsphere,hres,vres);
