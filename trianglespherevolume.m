@@ -1,5 +1,5 @@
 function [k] = trianglespherevolume(vscene)
-  k=[]; vsceneaabb = axisalignedboundingbox(vscene.vertexlist);
+  k=[];
   for m = 1:size(vscene.objects,2)
     drawobjtriangles = vscene.objects{m}.triangles;
     trspherelist = trianglecircumsphere(drawobjtriangles(:,1:3,:));
