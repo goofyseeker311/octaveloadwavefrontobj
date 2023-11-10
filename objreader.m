@@ -9,6 +9,7 @@ cubemodel = loadwavefrontobjfile(objfilename);
 aabb = axisalignedboundingbox(cubemodel.vertexlist);
 tspheres = trianglespherevolume(cubemodel);
 ospheres = objectspherevolume(cubemodel);
+spint = sortsphereintersection(ospheres);
 trplane = planefrompoints(triangle);
 ppdist = pointplanedistance(campost,trplane);
 rpdist = rayplanedistance(campost,camdir,trplane);
