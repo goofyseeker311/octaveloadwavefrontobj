@@ -8,6 +8,7 @@ centeraabbs = [0 0 0 1 1 1; 1.5 0 0 1 0.1 0.2];
 veclen = vectorlength(camdir);
 cubemodel = loadwavefrontobjfile(objfilename);
 aabb = axisalignedboundingbox(cubemodel.vertexlist);
+caabb = centeraxisalignedboundingbox(cubemodel.vertexlist);
 tspheres = trianglespherevolume(cubemodel);
 ospheres = objectspherevolume(cubemodel);
 spint = sortsphereintersection(ospheres);
