@@ -1,7 +1,7 @@
 function [k] = sortsphereintersection(vsphere)
   k={}; xss=vsphere(:,1); yss=vsphere(:,2); zss=vsphere(:,3); rss=vsphere(:,4);
   xssL=[xss-rss xss+rss]; yssL=[yss-rss yss+rss]; zssL=[zss-rss zss+rss];
-  xssA=xssL(:); yssA=yssL(:); zssA=zssL(:); rssc=size(rss,1);
+  xssA=xssL(:); yssA=yssL(:); zssA=zssL(:); rssc=size(rss,1); k=cell(1,rssc);
   [xssAs,xssAsi]=sort(xssA); [yssAs,yssAsi]=sort(yssA); [zssAs,zssAsi]=sort(zssA);
   xssAsi2=xssAsi; xssAsi2f=find(xssAsi2>rssc); xssAsi2(xssAsi2f)-=rssc;
   yssAsi2=yssAsi; yssAsi2f=find(yssAsi2>rssc); yssAsi2(yssAsi2f)-=rssc;
@@ -15,6 +15,11 @@ function [k] = sortsphereintersection(vsphere)
     zssAsLif = zssAsi2(zssAsLir(n,1):zssAsLir(n,2));
     xyzssAsLif = setdiff(intersect(intersect(xssAsLif,yssAsLif),zssAsLif),n);
     [sspint,sspdist,ssphit] = spheresphereintersection(vsphere(xyzssAsLif,:),vsphere(n,:));
-    ssphitf = find(ssphit); k{n} = xyzssAsLif(ssphitf);
+    ssphitf = find(ssphit); xyzssAsLifA = xyzssAsLif(ssphitf)'; k{n} = unique([k{n} xyzssAsLifA]);
+    if (!isempty(xyzssAsLifA))
+      for m = 1:size(xyzssAsLifA,2)
+        nind = xyzssAsLifA(m); k{nind} = unique([k{nind} n]);
+      endfor
+    endif
   endfor
 endfunction

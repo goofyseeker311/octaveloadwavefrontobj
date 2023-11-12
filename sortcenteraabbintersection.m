@@ -2,7 +2,7 @@ function [k] = sortcenteraabbintersection(vcenteraabb)
   k={};xss=vcenteraabb(:,1);yss=vcenteraabb(:,2);zss=vcenteraabb(:,3);
   rssx=vcenteraabb(:,4); rssy=vcenteraabb(:,5); rssz=vcenteraabb(:,6);
   xssL=[xss-rssx xss+rssx]; yssL=[yss-rssy yss+rssy]; zssL=[zss-rssz zss+rssz];
-  xssA=xssL(:); yssA=yssL(:); zssA=zssL(:); rssc=size(rssx,1);
+  xssA=xssL(:); yssA=yssL(:); zssA=zssL(:); rssc=size(rssx,1); k=cell(1,rssc);
   [xssAs,xssAsi]=sort(xssA); [yssAs,yssAsi]=sort(yssA); [zssAs,zssAsi]=sort(zssA);
   xssAsi2=xssAsi; xssAsi2f=find(xssAsi2>rssc); xssAsi2(xssAsi2f)-=rssc;
   yssAsi2=yssAsi; yssAsi2f=find(yssAsi2>rssc); yssAsi2(yssAsi2f)-=rssc;
@@ -14,6 +14,12 @@ function [k] = sortcenteraabbintersection(vcenteraabb)
     xssAsLif = xssAsi2(xssAsLir(n,1):xssAsLir(n,2));
     yssAsLif = yssAsi2(yssAsLir(n,1):yssAsLir(n,2));
     zssAsLif = zssAsi2(zssAsLir(n,1):zssAsLir(n,2));
-    k{n} = setdiff(intersect(intersect(xssAsLif,yssAsLif),zssAsLif),n);
+    xyzssAsLif = setdiff(intersect(intersect(xssAsLif,yssAsLif),zssAsLif),n);
+    xyzssAsLifA = xyzssAsLif'; k{n} = unique([k{n} xyzssAsLifA]);
+    if (!isempty(xyzssAsLifA))
+      for m = 1:size(xyzssAsLifA,2)
+        nind = xyzssAsLifA(m); k{nind} = unique([k{nind} n]);
+      endfor
+    endif
   endfor
 endfunction
